@@ -1,0 +1,325 @@
+{% extends '../layout.html' %}
+
+{% block stylesheet-page %}
+<link rel="stylesheet" href="/assets/css/page.css">
+<link rel="stylesheet" href="/assets/css/messages.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">我的消息</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="nav nav-page" role="nav">
+        <li role="presentation" class="active"><a href="/message/risk">风险<span class="badge">1</span></a></li>
+        <li role="presentation"><a href="/message/reply">回复<span class="badge">2</span></a></li>
+        <li role="presentation"><a href="/message/announcement">公告<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/daily">日报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/weekly">周报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
+      </ul>
+
+      <ul class="message">
+        <li class="media notice">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u40.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">杨峻<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><i class="fa fa-user"></i> 相关人员</div>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-danger">一级风险</li>
+              <li class="label label-info"><a href="#">宝通寺哈哈宝通寺哈哈宝通寺哈哈宝通寺哈哈</a></li>
+              <li class="label label-info">主体结构</li>
+              <li class="label label-info">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+            <form method="post">
+              <input type="hidden" name="action" value="confirm" />
+              <input type="hidden" name="message-id" value="" />
+              <button type="submit" class="btn btn-primary btn-lg btn-block">确认收到</button>
+            </form>
+          </div>
+        </li>
+
+        <li class="media">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><i class="fa fa-user"></i> 相关人员</div>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <img src="/assets/images/pic-placeholder-sm.png">
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-warning">二级风险</li>
+              <li class="label label-info"><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info">主体结构</li>
+              <li class="label label-info">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <ul class="comment-box__list media-list">
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨文艺</a>：险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨文艺</a>：
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="comment-box__show-more">点击查看更多</a>
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u155.png">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" rows="1" placeholder="回复杨文艺"></textarea>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-picture-o"></i></button>
+                  <button class="btn btn-default" type="submit">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                </ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+
+        <li class="media">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><i class="fa fa-user"></i> 相关人员</div>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
+            <table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>监测对象</th>
+                  <th>监测项目</th>
+                  <th>测点编号</th>
+                  <th>初始绝对值</th>
+                  <th>最新绝对值</th>
+                  <th>累计总量</th>
+                  <th>前次变化</th>
+                  <th>监测时间</th>
+                  <th>来源</th>
+                  <th>级别</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>主体结构</td>
+                  <td>桩顶沉降</td>
+                  <td>CJ-001</td>
+                  <td>23.40mm</td>
+                  <td>25.50021m</td>
+                  <td>2.1mm</td>
+                  <td>0.2mm/d</td>
+                  <td>2016-05-11</td>
+                  <td>第三</td>
+                  <td>正常</td>
+                </tr>
+                <tr>
+                  <td>主体结构</td>
+                  <td>桩顶沉降</td>
+                  <td>CJ-001</td>
+                  <td>23.41mm</td>
+                  <td>21.31002m</td>
+                  <td>-2.1mm</td>
+                  <td>0.2mm/d</td>
+                  <td>2016-05-11</td>
+                  <td>施工</td>
+                  <td>一级</td>
+                </tr>
+                <tr>
+                  <td>主体结构</td>
+                  <td>桩顶沉降</td>
+                  <td>CJ-002</td>
+                  <td>23.4mm</td>
+                  <td>21.20021m</td>
+                  <td>-1.2mm</td>
+                  <td>0.2mm/d</td>
+                  <td>2016-05-10</td>
+                  <td>第三</td>
+                  <td>二级</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-warning">二级风险</li>
+              <li class="label label-info"><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info">主体结构</li>
+              <li class="label label-info">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <ul class="comment-box__list media-list">
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨文艺</a>：险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  回复<a href="#">杨文艺</a>：
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <img src="/assets/images/pic-placeholder-xs.png">
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply">回复</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="comment-box__show-more">点击查看更多</a>
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u155.png">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" rows="1" placeholder="回复杨文艺"></textarea>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-picture-o"></i></button>
+                  <button class="btn btn-default" type="submit">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                  <li><img src="/assets/images/pic-placeholder-xs.png"></li>
+                </ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+      </ul>
+      <a href="#" class="message__load-more">点击加载更多</a>
+    </div>
+
+    <div class="col-md-4">
+      <div class="map-conatiner" data-spy="affix" data-offset-top="50">
+        <img class="img-responsive" src="/assets/images/metro-map.png">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

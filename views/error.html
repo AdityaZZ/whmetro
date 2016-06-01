@@ -1,0 +1,15 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+  {% if error.stack %}
+  <section class="container">
+    <h1>{{error.status}} {{message}}</h1>
+    <hr>
+    <pre>{{error.stack}}</pre>
+  </section>
+  {% else %}
+  <h1 class="text-center">{{error.status}} {{message}}</h1>
+  <hr>
+  <p class="text-center">2016 &copy; Wuhan Metro</p>
+  {% endif %}
+{% endblock %}

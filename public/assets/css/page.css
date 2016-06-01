@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    #PAGE-COMMON-PARTS
+\*------------------------------------*/
+body {
+  background-color: #ecf0f5;
+}
+
+.page-header.metro {
+  display: block;
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.page-title,
+.page-header__title {
+  display: block;
+  color: #3c8dbc;
+  margin: .5em 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+
+
+/*------------------------------------*\
+    #PAGE-NAVIGATION
+\*------------------------------------*/
+.nav-page {
+  font-size: 16px;
+  background: #fff;
+  box-shadow: 0 0 2px #aaa;
+  border-bottom: 3px solid #3cf;
+  overflow: hidden;
+}
+.nav-page > li {
+  float: left;
+  margin-bottom: -3px;
+}
+.nav-page > li + li {
+  margin-left: 2px;
+}
+.nav-page > li > a {
+  color: #000;
+  padding: 6px 18px;
+}
+.nav-page > li > a > .badge {
+  vertical-align: top;
+  margin-left: .15em;
+  background: #d9534f;
+}
+.nav-page > li.active > a,
+.nav-page > li.active > a:hover,
+.nav-page > li.active > a:focus {
+  color: #fff;
+  background-color: #3cf;
+}
