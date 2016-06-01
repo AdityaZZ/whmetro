@@ -1,0 +1,56 @@
+<li class="media{% if notice %} notice{% endif %}" data-id="{{id}}" data-time="{{timestamp}}">
+  <!-- AVATAR START -->
+  <div class="media-left">
+    <a href="#"><img class="img-circle" src="{{avatar_url}}"></a>
+  </div>
+  <!-- AVATAR END -->
+  <div class="media-body">
+    <h4 class="media-heading">{{author}}<small>{{date}}</small></h4>
+    <div class="top-right-corner">
+      {% if related_url %}<a href="{{related_url}}" class="related-member"><i class="fa fa-user"></i> 相关人员</a>{% endif %}
+      {% if detail_url %}<a href="{{detail_url}}" class="message-detail"><i class="fa fa-file-text-o"></i> 详情</a>{% endif %}
+    </div>
+    <!-- MESSAGE CONTENT START -->
+    {{message}}
+    <!-- MESSAGE CONTENT END -->
+    <!-- LABEL LIST START -->
+    <ul class="message__labels">
+      {% for label in labels %}
+      <li class="label label-{{label.type}}" data-id="{{label.id}}">{% if label.url %}<a href="{{label.url}}">{% endif %}{{label.name}}{% if label.url %}</a>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    <!-- LABEL LIST END -->
+    <!-- ACKNOWLEDGE BUTTON START -->
+    {% if acknowledge %}
+    <button type="button" class="btn btn-primary btn-lg btn-block">确认收到</button>
+    {% endif %}
+    <!-- ACKNOWLEDGE BUTTON END -->
+  </div>
+  <!-- COMMENT BOX START -->
+  {% if enable_comment %}
+  <div class="comment-box">
+    <!-- COMMENT LIST START -->
+    <ul class="comment-box__list media-list"></ul>
+    <!-- COMMENT LIST END -->
+    <a href="#" class="comment-box__show-more">点击查看更多</a>
+    <form class="comment-box__form" action="#" method="post">
+      <img class="img-circle" src="{{avatar_url}}">
+      <div class="input-group">
+        <textarea class="form-control" name="comment" rows="1" placeholder="回复{{author}}"></textarea>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="fa fa-picture-o"></i></button>
+          <button class="btn btn-default" type="submit">回复</button>
+        </span>
+      </div>
+      <div class="image-box">
+        <ul>
+          <!-- EXAMPLE LIST ITEM -->
+          <!-- <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li> -->
+        </ul>
+        <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+  <!-- COMMENT BOX END -->
+</li>

@@ -41,10 +41,13 @@
   margin-top: .5em;
 }
 .message .top-right-corner {
-  color: #999999;
   position: absolute;
   right: 12px;
   top: 12px;
+}
+.message .top-right-corner,
+.message .top-right-corner a {
+  color: #999999;
 }
 .message__labels {
   margin: .8em -4px;
@@ -194,6 +197,25 @@
   display: inline-block;
   max-width: 50px;
   max-height: 50px;
+}
+.comment-box .image-box > ul > li > a {
+  position: relative;
+}
+.comment-box .image-box > ul > li > a:after {
+  content: "\f00d";
+  color: #fff;
+  font: normal normal normal 32px/1 FontAwesome;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  background-color: #000;
+}
+.comment-box .image-box > ul > li:hover > a:after {
+  opacity: .6;
 }
 .comment-box .image-box img {
   vertical-align: top;
