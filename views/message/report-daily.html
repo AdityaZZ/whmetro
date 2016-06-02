@@ -1,0 +1,161 @@
+{% extends '../layout.html' %}
+
+{% block stylesheet-page %}
+<link rel="stylesheet" href="/assets/css/page.css">
+<link rel="stylesheet" href="/assets/css/messages.css">
+{% endblock %}
+
+{% block javascript-page %}
+<script src="/assets/js/message.js"></script>
+<script src="/assets/js/page/my-messages.js"></script>
+<script>
+MyMessages.init('report_daily');
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">我的消息</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="nav nav-page" role="nav">
+        <li role="presentation"><a href="/message/risk">风险<span class="badge">1</span></a></li>
+        <li role="presentation"><a href="/message/reply">回复<span class="badge">2</span></a></li>
+        <li role="presentation"><a href="/message/announcement">公告<span class="badge"></span></a></li>
+        <li role="presentation" class="active"><a href="/message/report/daily">日报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/weekly">周报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
+      </ul>
+
+      <ul class="message">
+        <li class="message__item media" data-id="1" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p><span class="message-job-label">今日完成工作</span>测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电</p>
+            <p><span class="message-job-label">未完成工作</span>继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字</p>
+            <p><span class="message-job-label">工作总结</span>总感觉今日应该说说说说说，然后应该很多很多字，字，字，这里加很多很多的字这里加很多很多的字这里加测点测点漏水，漏电测点测点漏水，漏电<br>很多很多的字字</p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info" data-id="">主体结构</li>
+              <li class="label label-info" data-id="">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="2" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p><span class="message-job-label">今日完成工作</span>测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电</p>
+            <p><span class="message-job-label">未完成工作</span>继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字</p>
+            <p><span class="message-job-label">工作总结</span>总感觉今日应该说说说说说，然后应该很多很多字，字，字，这里加很多很多的字这里加很多很多的字这里加测点测点漏水，漏电测点测点漏水，漏电<br>很多很多的字字</p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info" data-id="">主体结构</li>
+              <li class="label label-info" data-id="">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="3" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p><span class="message-job-label">今日完成工作</span>测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电</p>
+            <p><span class="message-job-label">未完成工作</span>继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字</p>
+            <p><span class="message-job-label">工作总结</span>总感觉今日应该说说说说说，然后应该很多很多字，字，字，这里加很多很多的字这里加很多很多的字这里加测点测点漏水，漏电测点测点漏水，漏电<br>很多很多的字字</p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info" data-id="">主体结构</li>
+              <li class="label label-info" data-id="">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="4" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p><span class="message-job-label">今日完成工作</span>测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电测点测点漏水，漏电</p>
+            <p><span class="message-job-label">未完成工作</span>继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字继续继续测点，下工地，这里加很多很多的字</p>
+            <p><span class="message-job-label">工作总结</span>总感觉今日应该说说说说说，然后应该很多很多字，字，字，这里加很多很多的字这里加很多很多的字这里加测点测点漏水，漏电测点测点漏水，漏电<br>很多很多的字字</p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info" data-id="">主体结构</li>
+              <li class="label label-info" data-id="">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+      </ul>
+      <a href="#" class="message__load-more disabled"></a>
+    </div>
+
+    <div class="col-md-4">
+      <div class="map-conatiner" data-spy="affix" data-offset-top="50">
+        <img class="img-responsive" src="/assets/images/metro-map.png">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

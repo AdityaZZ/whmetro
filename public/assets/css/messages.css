@@ -72,6 +72,13 @@
   margin-left: 6px;
 }
 
+.message-job-label {
+  color: #999;
+}
+.message-job-label:after {
+  content: "：";
+}
+
 /* style the table inside the message item */
 .message__item table {}
 .message__item table:not(.table) {

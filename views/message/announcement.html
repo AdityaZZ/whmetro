@@ -1,0 +1,131 @@
+{% extends '../layout.html' %}
+
+{% block stylesheet-page %}
+<link rel="stylesheet" href="/assets/css/page.css">
+<link rel="stylesheet" href="/assets/css/messages.css">
+{% endblock %}
+
+{% block javascript-page %}
+<script src="/assets/js/message.js"></script>
+<script src="/assets/js/page/my-messages.js"></script>
+<script>
+MyMessages.init('announcement');
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">我的消息</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="nav nav-page" role="nav">
+        <li role="presentation"><a href="/message/risk">风险<span class="badge">1</span></a></li>
+        <li role="presentation"><a href="/message/reply">回复<span class="badge">2</span></a></li>
+        <li role="presentation" class="active"><a href="/message/announcement">公告<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/daily">日报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/weekly">周报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
+      </ul>
+
+      <ul class="message">
+        <li class="message__item media" data-id="1" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u40.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">杨峻<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视   这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</p>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">系统公告</a></li>
+              <li class="label label-info" data-id="">更新</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="2" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视   这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</p>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">系统公告</a></li>
+              <li class="label label-info" data-id="">更新</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="3" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u161.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益生君<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视   这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</p>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">系统公告</a></li>
+              <li class="label label-info" data-id="">更新</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="4" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u157.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">理工印象<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视   这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</p>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">系统公告</a></li>
+              <li class="label label-info" data-id="">更新</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+
+        <li class="message__item media" data-id="5" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u163.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">行界<small>2015-3-14</small></h4>
+            <!-- MESSAGE CONTENT START -->
+            <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视   这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</p>
+            <!-- MESSAGE CONTENT END -->
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label label-info" data-id=""><a href="#">系统公告</a></li>
+              <li class="label label-info" data-id="">更新</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+        </li>
+      </ul>
+      <a href="#" class="message__load-more disabled"></a>
+    </div>
+
+    <div class="col-md-4">
+      <div class="map-conatiner" data-spy="affix" data-offset-top="50">
+        <img class="img-responsive" src="/assets/images/metro-map.png">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

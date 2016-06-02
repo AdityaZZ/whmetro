@@ -70,7 +70,6 @@ var MyMessages = (function($) {
             } catch(e) {}
           }
           console.error(error);
-        callback.apply(this, arguments);
         }
       },
       success: function(data, textStatus, jqXHR) {

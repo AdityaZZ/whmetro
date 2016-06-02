@@ -18,4 +18,24 @@ router.get('/reply', function(req, res, next) {
   res.render('message/reply');
 });
 
+// 公告
+router.get('/announcement', function(req, res, next) {
+  res.render('message/announcement');
+});
+
+// 日报
+router.get('/report/daily', function(req, res, next) {
+  res.render('message/report-daily');
+});
+
+// 周报
+router.get('/report/weekly', function(req, res, next) {
+  res.render('message/report-weekly');
+});
+
+// 整改
+router.get('/rectificate', function(req, res, next) {
+  res.render('message/rectificate');
+});
+
 module.exports = router;
