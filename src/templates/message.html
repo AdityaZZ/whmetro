@@ -1,4 +1,4 @@
-<li class="media{% if notice %} notice{% endif %}" data-id="{{id}}" data-time="{{timestamp}}">
+<li class="message__item media{% if notice %} notice{% endif %}" data-id="{{id}}" data-time="{{timestamp}}">
   <!-- AVATAR START -->
   <div class="media-left">
     <a href="#"><img class="img-circle" src="{{avatar_url}}"></a>
@@ -13,16 +13,21 @@
     <!-- MESSAGE CONTENT START -->
     {{message}}
     <!-- MESSAGE CONTENT END -->
+    <!-- REPLY QUOTE START -->
+    {% if reply_quote %}
+    <div class="reply-quote" data-label="回复我的评论："></div>
+    {% endif %}
+    <!-- REPLY QUOTE END -->
     <!-- LABEL LIST START -->
     <ul class="message__labels">
       {% for label in labels %}
-      <li class="label label-{{label.type}}" data-id="{{label.id}}">{% if label.url %}<a href="{{label.url}}">{% endif %}{{label.name}}{% if label.url %}</a>{% endif %}</li>
+      <li class="label {{label.type}}" data-id="{{label.id}}">{% if label.url %}<a href="{{label.url}}">{% endif %}{{label.name}}{% if label.url %}</a>{% endif %}</li>
       {% endfor %}
     </ul>
     <!-- LABEL LIST END -->
     <!-- ACKNOWLEDGE BUTTON START -->
     {% if acknowledge %}
-    <button type="button" class="btn btn-primary btn-lg btn-block">确认收到</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block message__ack-btn">确认收到</button>
     {% endif %}
     <!-- ACKNOWLEDGE BUTTON END -->
   </div>
@@ -30,16 +35,22 @@
   {% if enable_comment %}
   <div class="comment-box">
     <!-- COMMENT LIST START -->
-    <ul class="comment-box__list media-list"></ul>
+    {% if show_comment_list %}
+    <ul class="comment-box__list media-list">
+      <!-- FOR CHILDS PLEASE SEE comment.html -->
+    </ul>
+    {% endif %}
     <!-- COMMENT LIST END -->
+    {% if show_more_comment %}
     <a href="#" class="comment-box__show-more">点击查看更多</a>
+    {% endif %}
     <form class="comment-box__form" action="#" method="post">
       <img class="img-circle" src="{{avatar_url}}">
       <div class="input-group">
         <textarea class="form-control" name="comment" rows="1" placeholder="回复{{author}}"></textarea>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button"><i class="fa fa-picture-o"></i></button>
-          <button class="btn btn-default" type="submit">回复</button>
+          <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
+          <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
         </span>
       </div>
       <div class="image-box">

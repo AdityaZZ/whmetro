@@ -1,0 +1,200 @@
+{% extends '../layout.html' %}
+
+{% block stylesheet-page %}
+<link rel="stylesheet" href="/assets/css/page.css">
+<link rel="stylesheet" href="/assets/css/messages.css">
+{% endblock %}
+
+{% block javascript-page %}
+<script src="/assets/js/message.js"></script>
+<script src="/assets/js/page/my-messages.js"></script>
+<script>
+MyMessages.init('risk');
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">我的消息</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="nav nav-page" role="nav">
+        <li role="presentation"><a href="/message/risk">风险<span class="badge">1</span></a></li>
+        <li role="presentation" class="active"><a href="/message/reply">回复<span class="badge">2</span></a></li>
+        <li role="presentation"><a href="/message/announcement">公告<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/daily">日报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/report/weekly">周报<span class="badge"></span></a></li>
+        <li role="presentation"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
+      </ul>
+
+      <ul class="message">
+        <li class="message__item media" data-id="2" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a></div>
+            <!-- MESSAGE CONTENT START -->
+            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- REPLY QUOTE START -->
+            <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+            <!-- REPLY QUOTE END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u40.png">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
+                  <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                </ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+
+        <li class="message__item media" data-id="3" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a></div>
+            <!-- MESSAGE CONTENT START -->
+            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- REPLY QUOTE START -->
+            <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+            <!-- REPLY QUOTE END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u40.png">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
+                  <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                </ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+
+        <li class="message__item media" data-id="4" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a></div>
+            <!-- MESSAGE CONTENT START -->
+            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+            <!-- MESSAGE CONTENT END -->
+            <!-- REPLY QUOTE START -->
+            <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+            <!-- REPLY QUOTE END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u40.png">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
+                  <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/pic-placeholder-xs.png"></a></li>
+                </ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+      </ul>
+      <a href="#" class="message__load-more"></a>
+    </div>
+
+    <div class="col-md-4">
+      <div class="map-conatiner" data-spy="affix" data-offset-top="50">
+        <img class="img-responsive" src="/assets/images/metro-map.png">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

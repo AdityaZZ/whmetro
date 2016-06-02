@@ -1,11 +1,14 @@
 /*------------------------------------*\
-    #MESSAGE CONTAINER
+    #MESSAGE
 \*------------------------------------*/
+/* Message List Container (usually `ul` element) */
 .message {
   list-style: none;
   margin: .5em 0;
   padding: 0;
 }
+
+/* Message: Show More Button */
 .message__load-more {
   display: block;
   text-align: center;
@@ -13,42 +16,89 @@
   padding: 6px 0;
   color: #3366cc;
 }
+.message__load-more:before {
+  content: "点击加载更多";
+}
 .message__load-more:active,
 .message__load-more:focus,
 .message__load-more:hover {
   text-decoration: none;
 }
+.message__load-more.disabled {
+  color: #666666;
+  cursor: default;
+}
+.message__load-more.disabled:before {
+  content: "没有更多了 >_<";
+}
 
-.message > li {
+/* Message Item */
+.message__item {
+  font-size: 14px;
   background: #fff;
   padding: 12px;
   box-shadow: 0 0 2px #aaa;
   position: relative;
   overflow: visible;
 }
-.message > li.notice {
+.message__item.notice { /* emphasis: set light yellow background */
   background: #ffc;
 }
-.message > li .media-left img {
+/* Left avatar */
+.message__item .media-left img {
   width: 50px;
   height: 50px;
 }
-.message > li .media-heading {
+.message__item .media-heading {
   margin-bottom: .8em;
 }
-.message > li .media-heading > small {
+.message__item .media-heading > small {
   display: block;
   margin-top: .5em;
 }
-.message .top-right-corner {
+
+/* Top right corner of the message item */
+.message__item .top-right-corner {
+  text-align: right;
   position: absolute;
   right: 12px;
   top: 12px;
 }
-.message .top-right-corner,
-.message .top-right-corner a {
+.message__item .top-right-corner,
+.message__item .top-right-corner a {
   color: #999999;
 }
+.message__item .top-right-corner a {
+  margin-left: 6px;
+}
+
+/* style the table inside the message item */
+.message__item table {}
+.message__item table:not(.table) {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}
+.message__item table:not(.table) th,
+.message__item table:not(.table) td {
+  border: solid #000 1px;
+  padding: 0 3px;
+}
+
+/* blockquote of a reply */
+.message__item .reply-quote {
+  color: #333333;
+  background-color: #f9f9f9;
+  margin: 1em 0 .5em;
+  padding: .5em 1em;
+  font-size: 12px;
+}
+.message__item .reply-quote:before {
+  content: attr(data-label);
+  color: #999999;
+}
+
+/* labels of the message inside .message__item */
 .message__labels {
   margin: .8em -4px;
   padding: 0;
@@ -64,44 +114,55 @@
   text-decoration: none;
 }
 
-.message .comment-box {
+/* container of comment section */
+.message__item .comment-box {
   font-size: 14px;
   color: #333333;
   background: #f9f9f9;
   border-top: 1px solid #ddd;
-  margin: 0 -12px -12px -12px;
+  margin: 0 -12px -12px -12px; /* fill the space */
   padding: 12px;
   padding-left: 72px; /* 12 + 50 + 10 */
   padding-top: 4px;
 }
-.message .comment-box .media-left img {
+/* avatar of comment item */
+.message__item .comment-box .media-left img,
+.comment-box__form > .img-circle {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-.comment-box__list > li {
+/* comment list */
+.comment-box__list {
+  list-style: none;
+}
+
+/* comment item */
+.comment-box__item {
   border-bottom: 1px solid #ddd;
   margin: 0;
+  font-size: 12px;
   padding: 8px 0 6px 0;
 }
-.comment-box__list > li:last-child {
+.comment-box__item:last-child {
   border-bottom: none;
 }
-.comment-box__list > li > .media-left {
+.comment-box__item > .media-left {
   white-space: nowrap;
   padding-right: 0;
 }
-.comment-box__list > li > .media-body > *,
-.comment-box__list > li > .media-left > a,
-.comment-box__list > li > .media-left > a:after {
+.comment-box__item > .media-body > *,
+.comment-box__item > .media-left > a,
+.comment-box__item > .media-left > a:after {
   vertical-align: top;
 }
-.comment-box__list > li > .media-left > a:after {
+.comment-box__item > .media-left > a:after {
   content: "：";
   color: #333333;
 }
 
+/* extra info of a comment item */
 .comment-box__item-toolbox {
   text-align: right;
 }
@@ -111,6 +172,7 @@
   left: 112px; /* 12 + 50 + 10 + 30 + 10 */
 }
 
+/* Comment Section: show more button */
 .comment-box__show-more {
   display: block;
   text-align: center;
@@ -125,12 +187,13 @@
   text-decoration: none;
 }
 
+/* Comment/Reply Form */
 .comment-box__form {
   display: block;
   position: relative;
   margin-top: 8px;
 }
-.comment-box__form > .img-circle {
+.comment-box__form > .img-circle { /* avatar */
   position: absolute;
   top: 0;
   left: -40px;
@@ -153,6 +216,7 @@
   z-index: 100;
 }
 
+/* Area of uploaded images inside the comment form */
 .comment-box .image-box {
   position: absolute;
   background-color: #f9f9f9;

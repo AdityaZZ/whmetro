@@ -5,5 +5,5 @@ body {
 }
 
 html, body, .tooltip, .popover {
-  font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Tahoma, Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans CJK SC Regular", "Source Han Sans CN", "Source Han Sans CN Regular", "Source Han Sans SC", "Source Han Sans SC Regular", "Source Han Sans", "Source Han Sans Regular", "思源黑体", "思源黑体 Regular", "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Zen Hei", "ST Heiti", STXihei, "华文细黑", SimSun, "WenQuanYi Zen Hei Sharp", "宋体", Heiti, "黑体", sans-serif;
+  font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Tahoma, Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans CJK SC DemiLight", "Source Han Sans CN", "Source Han Sans CN Regular", "Source Han Sans SC", "Source Han Sans SC Regular", "Source Han Sans", "Source Han Sans Regular", "思源黑体", "思源黑体 Regular", "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Zen Hei", "ST Heiti", STXihei, "华文细黑", SimSun, "WenQuanYi Zen Hei Sharp", "宋体", Heiti, "黑体", sans-serif;
 }
