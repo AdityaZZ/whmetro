@@ -31,7 +31,7 @@
 <script src="/assets/js/message.js"></script>
 <script src="/assets/js/page/my-messages.js"></script>
 <script>
-MyMessages.init('risk');
+MyMessages.init('rectificate');
 </script>
 {% endblock %}
 
@@ -41,12 +41,12 @@ MyMessages.init('risk');
   <div class="row">
     <div class="col-md-8">
       <ul class="nav nav-page" role="nav">
-        <li role="presentation" class="active"><a href="/message/risk">风险<span class="badge">1</span></a></li>
+        <li role="presentation"><a href="/message/risk">风险<span class="badge">1</span></a></li>
         <li role="presentation"><a href="/message/reply">回复<span class="badge">2</span></a></li>
         <li role="presentation"><a href="/message/announcement">公告<span class="badge"></span></a></li>
         <li role="presentation"><a href="/message/report/daily">日报<span class="badge"></span></a></li>
         <li role="presentation"><a href="/message/report/weekly">周报<span class="badge"></span></a></li>
-        <li role="presentation"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
+        <li role="presentation" class="active"><a href="/message/rectificate">整改<span class="badge"></span></a></li>
       </ul>
 
       <ul class="message">
@@ -75,7 +75,7 @@ MyMessages.init('risk');
             </div>
             <!-- LABEL LIST START -->
             <ul class="message__labels">
-              <li class="label label-danger" data-id="">一级风险</li>
+              <li class="label bg-purple" data-id="">整改通知</li>
               <li class="label label-info" data-id=""><a href="#">宝通寺哈哈宝通寺哈哈宝通寺哈哈宝通寺哈哈</a></li>
               <li class="label label-info" data-id="">主体结构</li>
               <li class="label label-info" data-id="">漏电</li>
@@ -110,7 +110,7 @@ MyMessages.init('risk');
             </div>
             <!-- LABEL LIST START -->
             <ul class="message__labels">
-              <li class="label label-warning" data-id="">二级风险</li>
+              <li class="label bg-purple" data-id="">整改通知</li>
               <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
               <li class="label label-info" data-id="">主体结构</li>
               <li class="label label-info" data-id="">漏电</li>
@@ -281,7 +281,7 @@ MyMessages.init('risk');
             </div>
             <!-- LABEL LIST START -->
             <ul class="message__labels">
-              <li class="label label-warning" data-id="">二级风险</li>
+              <li class="label bg-purple" data-id="">整改通知</li>
               <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
               <li class="label label-info" data-id="">主体结构</li>
               <li class="label label-info" data-id="">漏电</li>
@@ -350,6 +350,113 @@ MyMessages.init('risk');
                 </div>
               </li>
               <li class="comment-box__item media" data-id="6" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                    </div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="pagination-wrapper"></div>
+            <a href="#" class="comment-box__show-more">点击查看更多</a>
+            <a href="#" class="comment-box__show-less">点击收起评论列表</a>
+          </div>
+          <!-- COMMENT SECTION END -->
+        </li>
+
+        <li class="message__item media" data-id="4" data-time="">
+          <div class="media-left">
+            <a href="#"><img class="img-circle" src="/assets/images/avatar/u42.png"></a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
+            <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a></div>
+            <div class="message__item-content">
+              <!-- MESSAGE CONTENT START -->
+              <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
+              <!-- MESSAGE CONTENT END -->
+              <div class="message__item-mask"></div>
+              <a href="#" class="collapse-button"></a>
+            </div>
+            <!-- LABEL LIST START -->
+            <ul class="message__labels">
+              <li class="label bg-purple" data-id="">整改通知</li>
+              <li class="label label-info" data-id=""><a href="#">宝通寺哈哈</a></li>
+              <li class="label label-info" data-id="">主体结构</li>
+              <li class="label label-info" data-id="">漏电</li>
+            </ul>
+            <!-- LABEL LIST END -->
+          </div>
+          <!-- COMMENT SECTION START -->
+          <div class="comment-box">
+            <form class="comment-box__form" action="#" method="post">
+              <img class="img-circle" src="/assets/images/avatar/u155.png">
+              <div class="input-group">
+                <div class="input-wrapper">
+                  <div class="reply-quote" data-label=""></div>
+                  <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                  <button type="button" class="close" aria-label="取消"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
+                  <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
+                </span>
+              </div>
+              <div class="image-box">
+                <ul></ul>
+                <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
+              </div>
+            </form>
+            <ul class="comment-box__list media-list">
+              <li class="comment-box__item media" data-id="1" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨峻</a></div>
+                    <div class="comment-box__item-content">这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="2" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="3" data-time="">
                 <div class="media-left">
                   <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
                 </div>

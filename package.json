@@ -6,6 +6,8 @@
   "scripts": {},
   "author": "gwc0721 <gwc0721@qq.com>",
   "devDependencies": {
+    "mockjs": "^1.0.1-beta2",
+    "nunjucks": "^2.4.2"
   },
   "dependencies": {
     "body-parser": "^1.15.1",

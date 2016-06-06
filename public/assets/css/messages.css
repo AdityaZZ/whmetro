@@ -120,6 +120,12 @@
   content: "展开全文";
 }
 
+.message__item-content__heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
 .message-job-label {
   color: #999;
 }
@@ -179,6 +185,7 @@
   padding: 12px;
   padding-left: 72px; /* 12 + 50 + 10 */
   padding-top: 4px;
+  position: relative;
 }
 /* avatar of comment item */
 .message__item .comment-box .media-left img,
@@ -257,6 +264,74 @@
 .comment-box__show-more:hover {
   background-color: #eee;
   text-decoration: none;
+}
+.with-pagination .comment-box__show-more {
+  display: none;
+}
+
+.comment-box__show-less {
+  position: absolute;
+  font-size: 12px;
+  bottom: 22px;
+  right: 12px;
+  display: none;
+}
+.with-pagination .comment-box__show-less {
+  display: initial;
+}
+
+.comment-box .pagination-wrapper {
+  margin-top: 6px;
+  display: none;
+}
+.comment-box.with-pagination  .pagination-wrapper {
+  display: block;
+}
+.comment-box .pagination {
+  margin: 0;
+}
+.comment-box .pagination > li > a,
+.comment-box .pagination > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  background: #fff;
+  color: #333;
+}
+.comment-box .pagination > li > a:focus,
+.comment-box .pagination > li > a:hover,
+.comment-box .pagination > li > span:focus,
+.comment-box .pagination > li > span:hover {
+  background-color: #eee;
+  color: #23527c;
+}
+.comment-box .pagination > li.active > a,
+.comment-box .pagination > li.active > a:focus,
+.comment-box .pagination > li.active > a:hover,
+.comment-box .pagination > li.active > span,
+.comment-box .pagination > li.active > span:focus,
+.comment-box .pagination > li.active > span:hover {
+  color: #fff;
+  background-color: #337ab7;
+}
+.comment-box .pagination > li.disabled > a,
+.comment-box .pagination > li.disabled > a:focus,
+.comment-box .pagination > li.disabled > a:hover,
+.comment-box .pagination > li.disabled > span,
+.comment-box .pagination > li.disabled > span:focus,
+.comment-box .pagination > li.disabled > span:hover {
+    color: #777;
+    background-color: #fff;
+}
+.comment-box .pagination > li:first-child > a,
+.comment-box .pagination > li:first-child > span {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.comment-box .pagination > li:last-child > a,
+.comment-box .pagination > li:last-child > span {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 /* Comment/Reply Form */

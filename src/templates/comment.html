@@ -4,7 +4,7 @@
   </div>
   <div class="media-body">
     <div class="comment-box__item-main">
-      <div class="reply-name">{% if reply_to %}<a class="reply-name" href="{{reply_to.profile_url}}">{{reply_to.name}}</a>{% endif %}</div>
+      <div class="reply-name">{% if reply_to %}<a href="{{reply_to.profile_url}}">{{reply_to.name}}</a>{% endif %}</div>
       <div class="comment-box__item-content">{{message}}</div>
     </div>
     <div class="comment-box__item-toolbox">

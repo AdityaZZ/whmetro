@@ -7,18 +7,18 @@
   <title>{% block title %}Wuhan Metro{% endblock %}</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   {% block head %}
-    {% block head-meta %}{% endblock %}
+    {% block head_meta %}{% endblock %}
 
-    {% block stylesheet-common %}
+    {% block stylesheet_common %}
       <link rel="stylesheet" href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
     {% endblock %}
 
-    {% block stylesheet-template %}{% endblock %}
+    {% block stylesheet_template %}{% endblock %}
 
     <link rel="stylesheet" href="/assets/css/common.css">
 
-    {% block stylesheet-page %}{% endblock %}
+    {% block stylesheet_page %}{% endblock %}
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,20 +26,20 @@
     <![endif]-->
   {% endblock %}
 </head>
-<body {% block body-attributes %}{% endblock %}>
+<body {% block body_attributes %}{% endblock %}>
   {% block content %}{% endblock %}
 
   {% block javascript %}
-    {% block javascript-common %}
+    {% block javascript_common %}
       <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
       <script src="/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     {% endblock %}
 
-    {% block javascript-template %}{% endblock %}
+    {% block javascript_template %}{% endblock %}
 
     <script src="/assets/js/common.js"></script>
 
-    {% block javascript-page %}{% endblock %}
+    {% block javascript_page %}{% endblock %}
   {% endblock %}
 </body>
 </html>

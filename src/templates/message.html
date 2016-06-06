@@ -11,6 +11,7 @@
       {% if detail_url %}<a href="{{detail_url}}" class="message-detail"><i class="fa fa-file-text-o"></i> 详情</a>{% endif %}
     </div>
     <div class="message__item-content{% if shrink %} shrinked{% endif %}">
+      {% if heading %}<div class="message__item-content__heading">{{heading}}</div>{% endif %}
       <!-- MESSAGE CONTENT START -->
       {{message}}
       <!-- MESSAGE CONTENT END -->
@@ -69,7 +70,9 @@
     {% endif %}
     <!-- COMMENT LIST END -->
     {% if show_more_comment %}
+    <div class="pagination-wrapper"></div>
     <a href="#" class="comment-box__show-more">点击查看更多</a>
+    <a href="#" class="comment-box__show-less">点击收起评论列表</a>
     {% endif %}
   </div>
   {% endif %}

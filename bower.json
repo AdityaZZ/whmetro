@@ -16,7 +16,7 @@
     "jquery": "1.12.x",
     "bootstrap": "3.3.x",
     "font-awesome": "^4.6.3",
-    "swig": "^1.4.2",
-    "AdminLTE": "admin-lte#^2.3.3"
+    "AdminLTE": "admin-lte#^2.3.3",
+    "nunjucks": "^2.4.2"
   }
 }

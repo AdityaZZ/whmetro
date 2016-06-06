@@ -1,11 +1,11 @@
 {% extends '../layout.html' %}
 
-{% block stylesheet-page %}
+{% block stylesheet_page %}
 <link rel="stylesheet" href="/assets/css/page.css">
 <link rel="stylesheet" href="/assets/css/messages.css">
 {% endblock %}
 
-{% block javascript-page %}
+{% block javascript_page %}
 <script src="/assets/js/message.js"></script>
 <script src="/assets/js/page/my-messages.js"></script>
 <script>
@@ -35,18 +35,22 @@ MyMessages.init('reply');
           <div class="media-body">
             <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
             <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-file-text-o"></i> 详情</a></div>
-            <!-- MESSAGE CONTENT START -->
-            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <!-- MESSAGE CONTENT END -->
+            <div class="message__item-content">
+              <!-- MESSAGE CONTENT START -->
+              <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <!-- MESSAGE CONTENT END -->
+              <div class="message__item-mask"></div>
+              <a href="#" class="collapse-button"></a>
+            </div>
             <!-- REPLY QUOTE START -->
             <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
             <!-- REPLY QUOTE END -->
@@ -90,18 +94,22 @@ MyMessages.init('reply');
           <div class="media-body">
             <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
             <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-file-text-o"></i> 详情</a></div>
-            <!-- MESSAGE CONTENT START -->
-            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <!-- MESSAGE CONTENT END -->
+            <div class="message__item-content">
+              <!-- MESSAGE CONTENT START -->
+              <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <!-- MESSAGE CONTENT END -->
+              <div class="message__item-mask"></div>
+              <a href="#" class="collapse-button"></a>
+            </div>
             <!-- REPLY QUOTE START -->
             <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
             <!-- REPLY QUOTE END -->
@@ -145,18 +153,22 @@ MyMessages.init('reply');
           <div class="media-body">
             <h4 class="media-heading">益行人<small>2015-3-14</small></h4>
             <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-file-text-o"></i> 详情</a></div>
-            <!-- MESSAGE CONTENT START -->
-            <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-            <!-- MESSAGE CONTENT END -->
+            <div class="message__item-content">
+              <!-- MESSAGE CONTENT START -->
+              <p>回复<a href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视。 <a href="#">视频链接</a></p>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <!-- MESSAGE CONTENT END -->
+              <div class="message__item-mask"></div>
+              <a href="#" class="collapse-button"></a>
+            </div>
             <!-- REPLY QUOTE START -->
             <div class="reply-quote" data-label="回复我的评论：">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
             <!-- REPLY QUOTE END -->

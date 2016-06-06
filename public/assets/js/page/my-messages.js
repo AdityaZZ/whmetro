@@ -10,16 +10,16 @@ var MyMessages = (function($) {
     }
   };
 
-  function get_messages(start, size, callback) {
-    if(!callback) {
-      callback = size;
+  // Templates
+  var tpl_message = $('#template-message').html() || '';
+  var tpl_comment = $('#template-comment').html() || '';
+  if(window.nunjucks) {
+    tpl_message = nunjucks.compile(tpl_message);
+    tpl_comment = nunjucks.compile(tpl_comment);
+  } else {
+    tpl_message.__proto__.render = tpl_comment.__proto__.render = function() {
+      return false;
     }
-    request('GET', options.messages.url, {
-      start: start,
-      size: size || options.messages.size
-    }, function(data) {
-      // TODO: render newly fetched messages
-    });
   }
 
   function init_acknowledge_button() {
@@ -55,6 +55,14 @@ var MyMessages = (function($) {
       var $msg_item = $img_btn.closest('.message__item');
       var $img_box = $msg_item.find('.image-box');
       $img_box.toggleClass('show');
+    });
+
+    $(document).on('click', function(e) {
+      var $imgbox = $(e.target).closest('.image-box');
+      var $imgbtn = $(e.target).closest('.comment-box__image-btn');
+      if(!$imgbox.length && !$imgbtn.length) {
+        $('.message__item .image-box.show').removeClass('show');
+      }
     });
   }
 
@@ -112,6 +120,43 @@ var MyMessages = (function($) {
     });
   }
 
+  function init_comment_paging() {
+    $('.message').on('split-page:success', '.message__item .comment-box', function(event, data) {
+      var $container = $(this).find('.comment-box__list').empty();
+      if(!data.data.length) {
+        $container.append('<li>没有数据</li>');
+        return;
+      }
+      $container.append($.map(data.data, function(val, i) {
+        return tpl_comment.render(val);
+      }));
+    }).on('split-page:error', '.message__item .comment-box', function(event) {
+      var $container = $(this).find('.comment-box__list').empty();
+      $container.append('<li>加载失败 请稍候再试</li>');
+    }).on('click', '.comment-box__show-more', function(event) {
+      event.preventDefault();
+      var $comment_box = $(this).blur().closest('.comment-box').addClass('with-pagination');
+      var initial_comments = $comment_box.data('initial-comments');
+      if(!initial_comments) {
+        $comment_box.data('initial_comments', $comment_box.find('.comment-box__list').html());
+      }
+      // TODO
+      $comment_box.splitpage({
+        url: '/message/comments',
+        type: 'GET',
+        contentType: 'application/json'
+      }, {
+        msgid: $comment_box.closest('.message__item').attr('data-id'),
+      });
+    }).on('click', '.comment-box__show-less', function(event) {
+      event.preventDefault();
+      var $comment_box = $(this).blur().closest('.comment-box').removeClass('with-pagination');
+      $comment_box.find('.comment-box__list').html($comment_box.data('initial_comments'));
+      // TODO
+      $comment_box.splitpage('destroy');
+    });
+  }
+
   function hide_reply_quote(message_item) {
     var $message_item = $(message_item);
     var $inputbox = $message_item.find('.comment-box__form .input-wrapper');
@@ -160,6 +205,7 @@ var MyMessages = (function($) {
       init_reply_button();
       init_image_box();
       init_comment_input();
+      init_comment_paging();
     }
   };
 
