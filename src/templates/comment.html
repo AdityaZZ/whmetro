@@ -3,7 +3,10 @@
     <img class="img-circle" src="{{avatar_url}}"><a href="#">{{author}}</a>
   </div>
   <div class="media-body">
-    {% if reply_to %}回复<a class="reply-name" href="{{reply_to.profile_url}}">{{reply_to.name}}</a>：{% endif %}{{message}}
+    <div class="comment-box__item-main">
+      <div class="reply-name">{% if reply_to %}<a class="reply-name" href="{{reply_to.profile_url}}">{{reply_to.name}}</a>{% endif %}</div>
+      <div class="comment-box__item-content">{{message}}</div>
+    </div>
     <div class="comment-box__item-toolbox">
       <span class="time">{{time}}</span>
       <a href="#" class="reply-link">回复</a>

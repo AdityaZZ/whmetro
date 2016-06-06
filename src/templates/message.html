@@ -1,11 +1,11 @@
 <li class="message__item media{% if notice %} notice{% endif %}" data-id="{{id}}" data-time="{{timestamp}}">
   <!-- AVATAR START -->
   <div class="media-left">
-    <a href="#"><img class="img-circle" src="{{avatar_url}}"></a>
+    {% if author_url %}<a href="{{author_url}}">{% endif %}<img class="img-circle" src="{{avatar_url}}">{% if author_url %}</a>{% endif %}
   </div>
   <!-- AVATAR END -->
   <div class="media-body">
-    <h4 class="media-heading">{{author}}<small>{{date}}</small></h4>
+    <h4 class="media-heading">{% if author_url %}<a href="{{author_url}}">{% endif %}{{author}}{% if author_url %}</a>{% endif %}<small>{{date}}</small></h4>
     <div class="top-right-corner">
       {% if related_url %}<a href="{{related_url}}" class="related-member"><i class="fa fa-user"></i> 相关人员</a>{% endif %}
       {% if detail_url %}<a href="{{detail_url}}" class="message-detail"><i class="fa fa-file-text-o"></i> 详情</a>{% endif %}
@@ -34,20 +34,15 @@
   <!-- COMMENT BOX START -->
   {% if enable_comment %}
   <div class="comment-box">
-    <!-- COMMENT LIST START -->
-    {% if show_comment_list %}
-    <ul class="comment-box__list media-list">
-      <!-- FOR CHILDS PLEASE SEE comment.html -->
-    </ul>
-    {% endif %}
-    <!-- COMMENT LIST END -->
-    {% if show_more_comment %}
-    <a href="#" class="comment-box__show-more">点击查看更多</a>
-    {% endif %}
+    <!-- COMMENT INPUT SECTION START -->
     <form class="comment-box__form" action="#" method="post">
       <img class="img-circle" src="{{avatar_url}}">
       <div class="input-group">
-        <textarea class="form-control" name="comment" rows="1" placeholder="回复{{author}}"></textarea>
+        <div class="input-wrapper">
+          <div class="reply-quote" data-label=""></div>
+          <textarea class="form-control" name="comment" rows="1" placeholder="回复{{author}}"></textarea>
+          <button type="button" class="close" aria-label="取消"><span aria-hidden="true">&times;</span></button>
+        </div>
         <span class="input-group-btn">
           <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
           <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
@@ -61,6 +56,17 @@
         <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
       </div>
     </form>
+    <!-- COMMENT INPUT SECTION END -->
+    <!-- COMMENT LIST START -->
+    {% if show_comment_list %}
+    <ul class="comment-box__list media-list">
+      <!-- FOR CHILDS PLEASE SEE comment.html -->
+    </ul>
+    {% endif %}
+    <!-- COMMENT LIST END -->
+    {% if show_more_comment %}
+    <a href="#" class="comment-box__show-more">点击查看更多</a>
+    {% endif %}
   </div>
   {% endif %}
   <!-- COMMENT BOX END -->

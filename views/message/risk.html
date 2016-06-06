@@ -33,7 +33,7 @@ MyMessages.init('risk');
             <a href="#"><img class="img-circle" src="/assets/images/avatar/u40.png"></a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">杨峻<small>2015-3-14</small></h4>
+            <h4 class="media-heading"><a href="#">杨峻</a><small>2015-3-14</small></h4>
             <div class="top-right-corner"><a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a></div>
             <!-- MESSAGE CONTENT START -->
             <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
@@ -89,58 +89,14 @@ MyMessages.init('risk');
           </div>
           <!-- COMMENT SECTION START -->
           <div class="comment-box">
-            <ul class="comment-box__list media-list">
-              <li class="comment-box__item media" data-id="1" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-              <li class="comment-box__item media" data-id="2" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨文艺</a>：险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-              <li class="comment-box__item media" data-id="3" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨文艺</a>：
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <a href="#" class="comment-box__show-more">点击查看更多</a>
             <form class="comment-box__form" action="#" method="post">
               <img class="img-circle" src="/assets/images/avatar/u155.png">
               <div class="input-group">
-                <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                <div class="input-wrapper">
+                  <div class="reply-quote" data-label=""></div>
+                  <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                  <button type="button" class="close" aria-label="取消"><span aria-hidden="true">&times;</span></button>
+                </div>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
                   <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
@@ -161,6 +117,64 @@ MyMessages.init('risk');
                 <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
               </div>
             </form>
+            <ul class="comment-box__list media-list">
+              <li class="comment-box__item media" data-id="1" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨峻</a></div>
+                    <div class="comment-box__item-content">这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="2" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="3" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                    </div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="comment-box__show-more">点击查看更多</a>
           </div>
           <!-- COMMENT SECTION END -->
         </li>
@@ -240,58 +254,14 @@ MyMessages.init('risk');
           </div>
           <!-- COMMENT SECTION START -->
           <div class="comment-box">
-            <ul class="comment-box__list media-list">
-              <li class="comment-box__item media" data-id="4" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨峻</a>：这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-              <li class="comment-box__item media" data-id="5" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨文艺</a>：险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-              <li class="comment-box__item media" data-id="6" data-time="">
-                <div class="media-left">
-                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
-                </div>
-                <div class="media-body">
-                  回复<a class="reply-name" href="#">杨文艺</a>：
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <img src="/assets/images/pic-placeholder-xs.png">
-                  <div class="comment-box__item-toolbox">
-                    <span class="time">2015-03-17 22:45</span>
-                    <a href="#" class="reply-link">回复</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <a href="#" class="comment-box__show-more">点击查看更多</a>
             <form class="comment-box__form" action="#" method="post">
               <img class="img-circle" src="/assets/images/avatar/u155.png">
               <div class="input-group">
-                <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                <div class="input-wrapper">
+                  <div class="reply-quote" data-label=""></div>
+                  <textarea class="form-control" name="comment" rows="1" placeholder="回复益行人"></textarea>
+                  <button type="button" class="close" aria-label="取消"><span aria-hidden="true">&times;</span></button>
+                </div>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default comment-box__image-btn"><i class="fa fa-picture-o"></i></button>
                   <button type="submit" class="btn btn-default comment-box__reply-btn">回复</button>
@@ -312,6 +282,64 @@ MyMessages.init('risk');
                 <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
               </div>
             </form>
+            <ul class="comment-box__list media-list">
+              <li class="comment-box__item media" data-id="4" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u155.png"><a href="#">杨文艺</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨峻</a></div>
+                    <div class="comment-box__item-content">这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="5" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">险这里就是回复啊啊啊按回复啊！啊 ，漏水啦，下雨！</div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+              <li class="comment-box__item media" data-id="6" data-time="">
+                <div class="media-left">
+                  <img class="img-circle" src="/assets/images/avatar/u40.png"><a href="#">杨峻</a>
+                </div>
+                <div class="media-body">
+                  <div class="comment-box__item-main">
+                    <div class="reply-name"><a href="#">杨文艺</a></div>
+                    <div class="comment-box__item-content">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                      <img src="/assets/images/pic-placeholder-xs.png">
+                    </div>
+                  </div>
+                  <div class="comment-box__item-toolbox">
+                    <span class="time">2015-03-17 22:45</span>
+                    <a href="#" class="reply-link">回复</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="comment-box__show-more">点击查看更多</a>
           </div>
           <!-- COMMENT SECTION END -->
         </li>

@@ -50,6 +50,72 @@ var MyMessages = (function($) {
     });
   }
 
+  function init_comment_input() {
+    var lastWhich;
+
+    $('.message').on('keypress', 'textarea', function(e) {
+      if(e.which == 13 || e.which == 10 && e.ctrlKey) { // Enter / Ctrl + Enter
+        e.preventDefault();
+        var content = $.trim($(this).val());
+        if(content != '') {
+          // TODO
+        }
+      }
+    });
+
+    $('.message').on('keydown', 'textarea', function(e) {
+      if(e.which == 8) { // Backspace
+        if($(this).val() == '') {
+          e.preventDefault();
+          if(lastWhich != e.which) {
+            var $message_item = $(this).closest('.message__item');
+            hide_reply_quote($message_item);
+          }
+        }
+      }
+      lastWhich = e.which;
+    });
+
+    $('.message').on('keyup', 'textarea', function(e) {
+      lastWhich = null;
+    });
+  }
+
+  function init_reply_button() {
+    $('.message').on('click', '.comment-box__item-toolbox .reply-link', function(e) {
+      e.preventDefault();
+      var $comment_item = $(this).closest('.comment-box__item');
+      var $message_item = $comment_item.closest('.message__item');
+      var $inputbox = $message_item.find('.comment-box__form .input-wrapper');
+      var $content = $comment_item.find('.comment-box__item-content').clone();
+      var replyto = $.trim($comment_item.find('> .media-left').text());
+      $content.find('img').replaceWith('[图片]');
+      $content.find('table').replaceWith('[表格]');
+      var content = $content.text();
+      $inputbox.find('.reply-quote').attr('data-label', replyto ? replyto + '：' : '').text(content);
+      $inputbox.addClass('with-reply-quote');
+      $inputbox.find('textarea').attr('placeholder', replyto ? '回复' + replyto : '').select();
+    });
+
+    $('.message').on('click', '.with-reply-quote .close', function(e) {
+      e.preventDefault();
+      var $message_item = $(this).closest('.message__item');
+      hide_reply_quote($message_item);
+    });
+  }
+
+  function hide_reply_quote(message_item) {
+    var $message_item = $(message_item);
+    var $inputbox = $message_item.find('.comment-box__form .input-wrapper');
+    if($inputbox.hasClass('with-reply-quote')) {
+      var $heading = $message_item.find('.media-heading').clone();
+      $heading.find('small').remove();
+      $inputbox.removeClass('with-reply-quote');
+      $inputbox.find('textarea').attr('placeholder', '回复' + $heading.text()).focus();
+      // TODO
+    }
+  }
+
   function request(method, url, data, callback) {
     if($.isPlainObject(data)) {
       data = JSON.stringify(data);
@@ -82,7 +148,9 @@ var MyMessages = (function($) {
   return {
     init: function(type) {
       init_acknowledge_button();
+      init_reply_button();
       init_image_box();
+      init_comment_input();
     }
   };
 
