@@ -41,6 +41,14 @@ var MyMessages = (function($) {
     });
   }
 
+  function init_collapse_button() {
+    $('.message').on('click', '.message__item-content .collapse-button', function(e) {
+      e.preventDefault();
+      var $msg_main = $(this).blur().closest('.message__item-content');
+      $msg_main.toggleClass('expanded shrinked');
+    });
+  }
+
   function init_image_box() {
     $('.message').on('click', '.comment-box__image-btn', function(e) {
       var $img_btn = $(this);
@@ -148,6 +156,7 @@ var MyMessages = (function($) {
   return {
     init: function(type) {
       init_acknowledge_button();
+      init_collapse_button();
       init_reply_button();
       init_image_box();
       init_comment_input();

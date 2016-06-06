@@ -10,9 +10,13 @@
       {% if related_url %}<a href="{{related_url}}" class="related-member"><i class="fa fa-user"></i> 相关人员</a>{% endif %}
       {% if detail_url %}<a href="{{detail_url}}" class="message-detail"><i class="fa fa-file-text-o"></i> 详情</a>{% endif %}
     </div>
-    <!-- MESSAGE CONTENT START -->
-    {{message}}
-    <!-- MESSAGE CONTENT END -->
+    <div class="message__item-content{% if shrink %} shrinked{% endif %}">
+      <!-- MESSAGE CONTENT START -->
+      {{message}}
+      <!-- MESSAGE CONTENT END -->
+      <div class="message__item-mask"></div>
+      <a href="#" class="collapse-button"></a>
+    </div>
     <!-- REPLY QUOTE START -->
     {% if reply_quote %}
     <div class="reply-quote" data-label="回复我的评论："></div>
