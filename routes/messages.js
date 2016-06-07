@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var Mock = require('mockjs');
 var router = express.Router();
 
@@ -55,12 +56,14 @@ router.get('/comments', function(req, res, next) {
     comments = comment_storage[msgid] = [];
     total = Mock.Random.natural(1, 150);
     for(var i = 0; i < total; ++i) {
+      var id = Mock.Random.increment();
+      var hash = checksum(`whmetro-${id}`);
       comments.push({
         id: Mock.Random.increment(),
         time: Mock.Random.datetime(),
         timestamp: ((new Date()).getTime() / 1000) | 0,
         author: Mock.Random.cname(),
-        avatar_url: 'http://lorempixel.com/50/50',
+        avatar_url: `/avatar/${hash}?size=50`,
         reply_to: {
           name: Mock.Random.cname(),
           profile_url: '#'
@@ -80,5 +83,16 @@ router.get('/comments', function(req, res, next) {
     data: comments.slice((page - 1) * size, page * size)
   });
 });
+
+
+// =============================================================================
+// COMMON FUNCTIONS
+// =============================================================================
+function checksum(str, algorithm, encoding) {
+  return crypto
+    .createHash(algorithm || 'md5')
+    .update(str, 'utf8')
+    .digest(encoding || 'hex');
+}
 
 module.exports = router;

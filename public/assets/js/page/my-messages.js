@@ -22,6 +22,17 @@ var MyMessages = (function($) {
     }
   }
 
+  function init_message_load_more() {
+    $('.message__load-more').on('click', function(e) {
+      e.preventDefault();
+      var $btn = $(this).blur();
+      if($btn.hasClass('disabled')) {
+        return;
+      }
+      // TODO
+    });
+  }
+
   function init_acknowledge_button() {
     $('.message').on('click', '.message__ack-btn', function(e) {
       e.preventDefault();
@@ -51,7 +62,7 @@ var MyMessages = (function($) {
 
   function init_image_box() {
     $('.message').on('click', '.comment-box__image-btn', function(e) {
-      var $img_btn = $(this);
+      var $img_btn = $(this).blur();
       var $msg_item = $img_btn.closest('.message__item');
       var $img_box = $msg_item.find('.image-box');
       $img_box.toggleClass('show');
@@ -200,6 +211,7 @@ var MyMessages = (function($) {
 
   return {
     init: function(type) {
+      init_message_load_more();
       init_acknowledge_button();
       init_collapse_button();
       init_reply_button();
