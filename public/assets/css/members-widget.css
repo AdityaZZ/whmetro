@@ -1,0 +1,88 @@
+.member-widget-container {
+  font-size: 12px;
+}
+.member-widget-container .select2-selection {
+  height: 28px;
+  padding: 4px 8px;
+}
+.member-widget-container .select2-selection__arrow {
+  top: -2px !important;
+}
+.member-widget-container .member-selector {
+  width: 105px;
+}
+.member-widget-container .member-widget-filters {
+  margin-bottom: 12px;
+}
+.member-widget-container .cbp-filter-item {
+  color: #5e5e5e;
+  background-color: #ccc;
+  font-size: 13px;
+  height: 25px;
+  line-height: 25px;
+  padding: 3px 8px;
+  margin: 0 3px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.member-widget-container .cbp-filter-item:hover {
+  text-decoration: none;
+}
+.member-widget-container .cbp-filter-item-active {
+  background-color: #ceebeb;
+}
+.member-widget-container .cbp-item,
+.member-widget-container .cbp-item .member {
+  border-radius: 6px;
+  overflow: hidden;
+}
+.member-widget-container .cbp-item .member {
+  display: block;
+  height: 46px;
+  width: 120px;
+  background-color: #ceebeb;
+  position: relative;
+}
+.member-widget-container .cbp-item .member:hover,
+.member-widget-container .cbp-item .member:active,
+.member-widget-container .cbp-item .member:focus {
+  background-color: #e2f3f3;
+}
+.member-widget-container .cbp-item .member:after {
+  content: "\f00d";
+  color: #fff;
+  font: normal normal normal 32px/1 FontAwesome;
+  padding: 7px 0;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+  display: none;
+}
+.member-widget-container .cbp-item .member:hover:after {
+  display: block;
+}
+.member-widget-container .cbp-item.reserved .member {
+  cursor: not-allowed;
+}
+.member-widget-container .cbp-item.reserved .member:after {
+  display: none;
+}
+.member-widget-container .cbp-item .avatar {
+  float: left;
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+}
+.member-widget-container .cbp-item .name {
+  color: #333;
+  font-size: 16px;
+  margin-top: 4px;
+}
+.member-widget-container .cbp-item .position {
+  color: #999;
+  font-size: 12px;
+}

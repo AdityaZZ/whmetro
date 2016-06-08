@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/assets/vendor/cubeportfolio/css/cubeportfolio.min.css">
+  <link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="/assets/vendor/AdminLTE/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/assets/css/common.css">
   <style>
     #filters-container {
@@ -31,8 +33,10 @@
     .cbp-filter-item-active {
       background-color: #ceebeb;
     }
-    .cbp-item {
+    .cbp-item,
+    .cbp-item .member {
       border-radius: 6px;
+      overflow: hidden;
     }
     .cbp-item .member {
       display: block;
@@ -40,7 +44,6 @@
       width: 120px;
       background-color: #ceebeb;
       position: relative;
-      overflow: hidden;
     }
     .cbp-item .member:hover,
     .cbp-item .member:active,
@@ -79,6 +82,9 @@
       color: #999;
       font-size: 12px;
     }
+    .member-selector {
+      width: 200px;
+    }
   </style>
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -88,6 +94,7 @@
 <body>
 <div class="container" style="padding-top: 24px">
   <div id="filters-container">
+    <select class="member-selector form-control select2"></select>
     <a data-filter="*" class="cbp-filter-item cbp-filter-item-active">显示全部 <span class="cbp-filter-counter"></span></a>
     <a data-filter=".cleaner" class="cbp-filter-item">卫生保洁 <span class="cbp-filter-counter"></span></a>
     <a data-filter=".developer" class="cbp-filter-item">开发人员 <span class="cbp-filter-counter"></span></a>
@@ -206,6 +213,8 @@
   <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="/assets/vendor/select2/dist/js/select2.full.min.js"></script>
+  <script src="/assets/vendor/select2/dist/js/i18n/zh-CN.js"></script>
   <script src="/assets/js/common.js"></script>
   <script>
     $('#grid-container').cubeportfolio({
@@ -215,6 +224,30 @@
       e.preventDefault();
       $('#grid-container').cubeportfolio('remove', $(this).closest('.cbp-item'));
     });
+    $.fn.select2.defaults.set('language', 'zh-CN');
+    var data_source = [
+      { id: 0, text: 'enhancement' },
+      { id: 1, text: 'bug' },
+      { id: 2, text: 'duplicate' },
+      { id: 3, text: 'invalid' },
+      { id: 4, text: 'wontfix' }
+    ];
+    $.each(data_source, function() {
+      $('.member-selector').append('<option value="' + this.id + '">' + this.text + '</option>');
+    });
+
+    $('.member-selector').select2({
+      placeholder: '点击添加成员'
+    });
+    $('.member-selector').val(null).trigger('change.select2');
+    setTimeout(function() {
+      $('.member-selector')
+        .append('<option value="5">test - 1</option>')
+        .append('<option value="6">test - 2</option>')
+        .append('<option value="7">test - 3</option>');
+      $('.member-selector').val(null).trigger('change.select2');
+      console.log('updated');
+    }, 5000);
   </script>
 </body>
 </html>
