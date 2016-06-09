@@ -101,6 +101,10 @@ var MyMessages = (function($) {
         }
       }
       lastWhich = e.which;
+      var $this = $(this);
+      var paddingBottom = parseInt($this.css('paddingBottom'));
+      var paddingTop = parseInt($this.css('paddingTop'));
+      $(this).height(0).height(this.scrollHeight - paddingBottom - paddingTop);
     });
 
     $('.message').on('keyup', 'textarea', function(e) {

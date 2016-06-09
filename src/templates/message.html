@@ -7,8 +7,7 @@
   <div class="media-body">
     <h4 class="media-heading">{% if author_url %}<a href="{{author_url}}">{% endif %}{{author}}{% if author_url %}</a>{% endif %}<small>{{date}}</small></h4>
     <div class="top-right-corner">
-      {% if related_url %}<a href="{{related_url}}" class="related-member"><i class="fa fa-user"></i> 相关人员</a>{% endif %}
-      {% if detail_url %}<a href="{{detail_url}}" class="message-detail"><i class="fa fa-file-text-o"></i> 详情</a>{% endif %}
+      {{top_right_corner}}
     </div>
     <div class="message__item-content{% if shrink %} shrinked{% endif %}">
       {% if heading %}<div class="message__item-content__heading">{{heading}}</div>{% endif %}

@@ -4,9 +4,10 @@
 .member-widget-container .select2-selection {
   height: 28px;
   padding: 4px 8px;
+  margin-top: -4px;
 }
 .member-widget-container .select2-selection__arrow {
-  top: -2px !important;
+  top: -6px !important;
 }
 .member-widget-container .member-selector {
   width: 105px;
@@ -18,12 +19,12 @@
   color: #5e5e5e;
   background-color: #ccc;
   font-size: 13px;
-  height: 25px;
-  line-height: 25px;
+  line-height: 1;
   padding: 3px 8px;
-  margin: 0 3px;
+  margin: 4px 3px 0;
   border-radius: 12px;
   cursor: pointer;
+  display: inline-block;
 }
 .member-widget-container .cbp-filter-item:hover {
   text-decoration: none;
@@ -62,20 +63,24 @@
   background-color: rgba(0,0,0,.5);
   display: none;
 }
-.member-widget-container .cbp-item .member:hover:after {
+.member-widget-container .allow-remove .cbp-item .member:hover:after {
   display: block;
 }
 .member-widget-container .cbp-item.reserved .member {
   cursor: not-allowed;
 }
 .member-widget-container .cbp-item.reserved .member:after {
-  display: none;
+  display: none !important;
 }
 .member-widget-container .cbp-item .avatar {
   float: left;
   width: 46px;
   height: 46px;
   padding: 8px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .member-widget-container .cbp-item .name {
   color: #333;

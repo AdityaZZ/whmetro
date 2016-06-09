@@ -6,7 +6,7 @@ var MemberWidget = (function($) {
     <select class="member-selector form-control select2 input-sm"></select>\
     <a data-filter="*" class="cbp-filter-item cbp-filter-item-active">显示全部 <span class="cbp-filter-counter"></span></a>\
   </div>\
-  <div class="member-widget-grid"></div>';
+  <div class="member-widget-grid allow-remove"></div>';
 
   var tpl_filter = '<a data-filter="[data-position={{id}}]" data-id="{{id}}" class="cbp-filter-item">{{text}} <span class="cbp-filter-counter"></span></a>';
 
@@ -41,7 +41,7 @@ var MemberWidget = (function($) {
     this._filters = {};
     this._selected = [];
     this._reserved = [];
-    this.options = $.extend({}, widget.defaults, this.options, options);
+    this.options = $.extend({}, widget.defaults, options);
 
     Object.defineProperty(this, 'val', { get: widget.prototype.get_selected, set: widget.prototype.set_selected });
     Object.defineProperty(this, 'value', { get: widget.prototype.get_selected, set: widget.prototype.set_selected });
@@ -52,11 +52,6 @@ var MemberWidget = (function($) {
     this.$filters = this.$container.find('> .member-widget-filters');
     this.$selector = this.$filters.find('> .member-selector');
     this.$grid = this.$container.find('> .member-widget-grid');
-
-    if(!this.options.toolbox) {
-      this.$filters.addClass('hidden');
-      this.$selector.addClass('hidden');
-    }
 
     this._init_data();
     this._init_dom();
@@ -69,7 +64,9 @@ var MemberWidget = (function($) {
     filters: [],
     selected: [],
     reserved: [],
-    toolbox: true
+    enable_filters: true,
+    enable_selector: true,
+    allow_remove: true
   };
 
   widget.prototype.configure = function(options) {
@@ -211,11 +208,24 @@ var MemberWidget = (function($) {
       self._add_filter(id, text);
     });
     this.$grid.append(this._add_cbp_item(this._selected, true));
-    var not_selected = $(Object.keys(this._members)).not(this._selected).get();
-    this._add_option(not_selected);
+    if(!this.options.enable_filters) {
+      this.$filters.find('.cbp-filter-item').addClass('hidden');
+    }
+    if(this.options.enable_selector) {
+      var not_selected = $(Object.keys(this._members)).not(this._selected).get();
+      this._add_option(not_selected);
+    } else {
+      this.$filters.find('.select2').addClass('hidden');
+    }
+    if(!this.options.enable_filters && !this.options.enable_selector) {
+      this.$filters.addClass('hidden');
+    }
   };
 
   widget.prototype._init_selector = function() {
+    if(!this.options.enable_selector) {
+      return;
+    }
     var self = this;
     $.fn.select2.defaults.set('language', 'zh-CN');
     this.$selector.select2({
@@ -231,10 +241,17 @@ var MemberWidget = (function($) {
 
   widget.prototype._init_cbp = function() {
     var self = this;
-    this.$grid.on('click', '.member', function(e) {
-      e.preventDefault();
-      self.remove(this);
-    }).cubeportfolio({
+    if(this.options.allow_remove) {
+      this.$grid.on('click', '.member', function(e) {
+        e.preventDefault();
+        self.remove(this);
+      });
+    } else {
+      this.$grid.on('click', '.member', function(e) {
+        e.preventDefault();
+      }).removeClass('allow-remove');
+    }
+    this.$grid.cubeportfolio({
       filters: this.$filters
     });
   };

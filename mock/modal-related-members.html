@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
-  <title>Experiment</title>
+  <title>Related Members</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
@@ -13,6 +13,27 @@
   <link rel="stylesheet" href="/assets/vendor/AdminLTE/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/assets/css/members-widget.css">
   <link rel="stylesheet" href="/assets/css/common.css">
+  <style>
+    /*.modal-styled {
+      background: none;
+    }
+    .modal-styled .modal-content {
+      border-radius: 3px;
+      border-top: 3px solid #3cf;
+      box-shadow: 0 0 6px rgba(0,0,0,.5);
+    }*/
+    .modal-content.box {
+      border-radius: 3px;
+      border-top-style: solid;
+      border-top-width: 3px;
+    }
+    .box-default {
+      border-top-color: #d2d6de;
+    }
+    .box-lightblue {
+      border-top-color: #3cf;
+    }
+  </style>
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,18 +42,21 @@
 <body>
   <div class="modal fade" id="modal">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content box box-info">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Default Modal</h4>
+          <h4 class="modal-title">相关人员</h4>
         </div>
         <div class="modal-body">
-          <div class="member-widget-container"></div>
+          <h5>已确认</h5>
+          <div class="member-widget-container confirmed"></div>
+          <h5>未确认</h5>
+          <div class="member-widget-container unconfirmed"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-sm btn-primary">确定</button>
         </div>
       </div>
     </div>
@@ -312,10 +336,19 @@
       }
     ];
     $('#modal').on('shown.bs.modal', function() {
-      $('.member-widget-container').memberWidget({
-        selected: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],
-        reserved: [2,3],
-        members: members
+      $('.member-widget-container.confirmed').memberWidget({
+        selected: [1,2,3,4,5,6,7,8,9,10,11,12],
+        members: members,
+        enable_filters: false,
+        enable_selector: false,
+        allow_remove: false
+      });
+      $('.member-widget-container.unconfirmed').memberWidget({
+        selected: [13,14,15,16,17,18,19,20,21],
+        members: members,
+        enable_filters: false,
+        enable_selector: false,
+        allow_remove: false
       });
     });
 
