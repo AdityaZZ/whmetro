@@ -15,9 +15,9 @@
 .member-widget-container .member-widget-filters {
   margin-bottom: 12px;
 }
-.member-widget-container .cbp-filter-item {
+.member-widget-container .group-selector {
   color: #5e5e5e;
-  background-color: #ccc;
+  background-color: #ebebeb;
   font-size: 13px;
   line-height: 1;
   padding: 3px 8px;
@@ -25,12 +25,22 @@
   border-radius: 12px;
   cursor: pointer;
   display: inline-block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.member-widget-container .cbp-filter-item:hover {
+.member-widget-container .group-selector:hover {
   text-decoration: none;
 }
-.member-widget-container .cbp-filter-item-active {
+.member-widget-container .group-selector.active {
   background-color: #ceebeb;
+}
+.member-widget-container .group-selector.inactive {
+  color: #999;
+}
+.member-widget-container .group-selector.indeterminate {
+  color: #777;
 }
 .member-widget-container .cbp-item,
 .member-widget-container .cbp-item .member {
@@ -87,7 +97,7 @@
   font-size: 16px;
   margin-top: 4px;
 }
-.member-widget-container .cbp-item .position {
+.member-widget-container .cbp-item .group {
   color: #999;
   font-size: 12px;
 }

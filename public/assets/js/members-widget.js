@@ -4,28 +4,30 @@ var MemberWidget = (function($) {
 
   var tpl_main = '<div class="member-widget-filters">\
     <select class="member-selector form-control select2 input-sm"></select>\
-    <a data-filter="*" class="cbp-filter-item cbp-filter-item-active">显示全部 <span class="cbp-filter-counter"></span></a>\
+    <a data-group="*" class="group-selector inactive">所有人</a>\
   </div>\
   <div class="member-widget-grid allow-remove"></div>';
 
-  var tpl_filter = '<a data-filter="[data-position={{id}}]" data-id="{{id}}" class="cbp-filter-item">{{text}} <span class="cbp-filter-counter"></span></a>';
+  var tpl_filter = '<a data-group="{{id}}" class="group-selector">{{text}}</a>';
 
-  var tpl_cbpitem = '<div class="cbp-item {{reserved}}" data-id="{{id}}" data-position="{{position}}">\
+  var tpl_cbpitem = '<div class="cbp-item {{reserved}}" data-id="{{id}}" data-group="{{group}}">\
     <a class="member" href="#">\
       <img class="avatar img-circle" src="{{avatar_url}}">\
       <div class="name">{{name}}</div>\
-      <div class="position">{{position_desc}}</div>\
+      <div class="group">{{group_desc}}</div>\
     </a>\
   </div>';
 
   function render(template, data) {
     data = data || {};
     return template.replace(/\{\{\s*([a-zA-Z0-9_\$\-\.]+)\s*\}\}/g, function(match, variable, offset) {
+      variable = variable.replace(/\[(\w+)\]/g, '.$1');
+      variable = variable.replace(/^\./, '');
       var levels = variable.split('.');
       var _data = data;
       for(var i = 0; i < levels.length; ++i) {
         if(_data === undefined || _data === null) {
-          break;
+          return '';
         }
         _data = _data[levels[i]];
       }
@@ -110,8 +112,11 @@ var MemberWidget = (function($) {
 
   widget.prototype.add = function(id) {
     var ids = $.isArray(id) ? id : [id];
+    ids = $(ids).not(this._selected).get();
+    this._selected = this._selected.concat(ids);
     this._add_cbp_item(ids);
     this._remove_option(ids);
+    this._update_group_selector();
   };
 
   widget.prototype.remove = function(target) {
@@ -136,8 +141,22 @@ var MemberWidget = (function($) {
     var ids = $item.map(function(index, item) {
       return $(item).attr('data-id');
     }).get();
+    this._selected = $(this._selected).not(ids).get();
     this._remove_cbp_item($item);
     this._add_option(ids);
+    this._update_group_selector();
+  };
+
+  widget.prototype.add_group = function(id) {
+    if(this._groups[id]) {
+      this.add(this._groups[id]);
+    }
+  };
+
+  widget.prototype.remove_group = function(id) {
+    if(this._groups[id]) {
+      this.remove(this._groups[id]);
+    }
   };
 
   widget.prototype.get_selected = function() {
@@ -166,12 +185,15 @@ var MemberWidget = (function($) {
     });
     this._add_option(removed);
     this._remove_option(added);
+    this._update_group_selector();
   };
 
   widget.prototype._init_data = function() {
     var self = this;
     this._members = {};
     this._filters = {};
+    this._groups = {};
+    this._groups['*'] = [];
     this._reserved = $.map(this.options.reserved, function(id) {
       return '' + id;
     });
@@ -181,10 +203,15 @@ var MemberWidget = (function($) {
         id: id,
         name: this.name,
         avatar_url: this.avatar_url,
-        position: this.position,
-        position_desc: this.position_desc,
+        group: this.group,
+        group_desc: this.group_desc,
         reserved: $.inArray(id, self._reserved) > -1 ? 'reserved' : ''
       }
+      if(!self._groups[this.group]) {
+        self._groups[this.group] = [];
+      }
+      self._groups[this.group].push(id);
+      self._groups['*'].push(id);
     });
     this._selected = $.map(this.options.selected, function(id) {
       if(self._members[id]) {
@@ -197,7 +224,7 @@ var MemberWidget = (function($) {
       });
     } else {
       $.each(this._members, function() {
-        self._filters[this.position] = this.position_desc;
+        self._filters[this.group] = this.group_desc;
       });
     }
   };
@@ -208,16 +235,11 @@ var MemberWidget = (function($) {
       self._add_filter(id, text);
     });
     this.$grid.append(this._add_cbp_item(this._selected, true));
-    if(!this.options.enable_filters) {
-      this.$filters.find('.cbp-filter-item').addClass('hidden');
-    }
     if(this.options.enable_selector) {
       var not_selected = $(Object.keys(this._members)).not(this._selected).get();
       this._add_option(not_selected);
+      this._update_group_selector();
     } else {
-      this.$filters.find('.select2').addClass('hidden');
-    }
-    if(!this.options.enable_filters && !this.options.enable_selector) {
       this.$filters.addClass('hidden');
     }
   };
@@ -237,6 +259,16 @@ var MemberWidget = (function($) {
       self.$selector.val(null).trigger('change.select2');
     });
     this.$selector.val(null).trigger('change.select2');
+    this.$filters.on('click', '.group-selector', function(e) {
+      e.preventDefault();
+      var $filter = $(this);
+      var group = $filter.attr('data-group');
+      if($filter.hasClass('active')) {
+        self.remove_group(group);
+      } else if($filter.hasClass('inactive') || $filter.hasClass('indeterminate')) {
+        self.add_group(group);
+      }
+    })
   };
 
   widget.prototype._init_cbp = function() {
@@ -251,13 +283,14 @@ var MemberWidget = (function($) {
         e.preventDefault();
       }).removeClass('allow-remove');
     }
-    this.$grid.cubeportfolio({
-      filters: this.$filters
-    });
+    this.$grid.cubeportfolio();
   };
 
-  widget.prototype._add_cbp_item = function(id, return_html) {
+  widget.prototype._add_cbp_item = function(id, return_html, callback) {
     var self = this;
+    if(this._busy) {
+      return false;
+    }
     var ids = $.isArray(id) ? id : [id];
     var html = $.map(ids, function(id) {
       if(self._members[id]) {
@@ -267,11 +300,27 @@ var MemberWidget = (function($) {
     if(return_html) {
       return html;
     }
-    this.$grid.cubeportfolio('appendItems', html.join('\n'));
+    this._busy = true;
+    this.$grid.cubeportfolio('appendItems', html.join('\n'), function() {
+      self._busy = false;
+      if(callback) {
+        callback.call(null);
+      }
+    });
   };
 
   widget.prototype._remove_cbp_item = function($item, callback) {
-    this.$grid.cubeportfolio('remove', $item, callback);
+    var self = this;
+    if(this._busy) {
+      return false;
+    }
+    this._busy = true;
+    this.$grid.cubeportfolio('remove', $item, function() {
+      self._busy = false;
+      if(callback) {
+        callback.call(null);
+      }
+    });
   };
 
   widget.prototype._add_filter = function(id, text) {
@@ -314,6 +363,37 @@ var MemberWidget = (function($) {
 
     if(!remain_selected) {
       this._selected = $.unique(this._selected.concat(ids));
+    }
+  };
+
+  widget.prototype._update_group_selector = function() {
+    if(!this.options.enable_selector) {
+      return false;
+    }
+    var self = this;
+    $.each(this._groups, function(group_id, group) {
+      var count = 0;
+      for(var i = 0; i < group.length; ++i) {
+        if($.inArray(group[i], self._selected) > -1) {
+          ++count;
+        }
+      }
+      if(count == 0) {
+        self.$filters.find('[data-group="' + group_id + '"]').removeClass('active indeterminate').addClass('inactive');
+      } else if(count == group.length) {
+        self.$filters.find('[data-group="' + group_id + '"]').removeClass('inactive indeterminate').addClass('active');
+      } else {
+        self.$filters.find('[data-group="' + group_id + '"]').removeClass('active inactive').addClass('indeterminate');
+      }
+    });
+    var $select_all = self.$filters.find('[data-group="*"]');
+    var filters = self.$filters.find('[data-group]').not('[data-group="*"]');
+    if(filters.filter('.active').length == filters.length) {
+      $select_all.removeClass('inactive indeterminate').addClass('active');
+    } else if(filters.filter('.inactive').length == filters.length) {
+      $select_all.removeClass('active indeterminate').addClass('inactive');
+    } else {
+      $select_all.removeClass('active inactive').addClass('indeterminate');
     }
   };
 

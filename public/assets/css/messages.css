@@ -355,6 +355,7 @@
   box-sizing: content-box;
   height: 20px; /* line-height */
   min-height: 20px;
+  overflow: hidden;
 }
 .comment-box__form .with-reply-quote textarea {
   padding-top: 38px; /* line-height + padding*3 */
@@ -391,6 +392,9 @@
 .comment-box__form button {
   height: 100%;
   box-sizing: initial;
+}
+.comment-box__form .input-group-btn {
+  vertical-align: top;
 }
 .comment-box__form textarea,
 .comment-box__form .input-group-btn > button {

@@ -19,7 +19,7 @@
     </div>
     <!-- REPLY QUOTE START -->
     {% if reply_quote %}
-    <div class="reply-quote" data-label="回复我的评论："></div>
+    <div class="reply-quote" data-label="回复我的评论：">{{reply_quote}}</div>
     {% endif %}
     <!-- REPLY QUOTE END -->
     <!-- LABEL LIST START -->
@@ -44,7 +44,7 @@
       <div class="input-group">
         <div class="input-wrapper">
           <div class="reply-quote" data-label=""></div>
-          <textarea class="form-control" name="comment" rows="1" placeholder="回复{{author}}"></textarea>
+          <textarea class="form-control" name="comment" rows="1" maxlength="255" placeholder="回复{{author}}"></textarea>
           <button type="button" class="close" aria-label="取消"><span aria-hidden="true">&times;</span></button>
         </div>
         <span class="input-group-btn">
@@ -66,13 +66,13 @@
     <ul class="comment-box__list media-list">
       <!-- FOR CHILDS PLEASE SEE comment.html -->
     </ul>
-    {% endif %}
-    <!-- COMMENT LIST END -->
-    {% if show_more_comment %}
+    {% if more_comments_btn %}
     <div class="pagination-wrapper"></div>
     <a href="#" class="comment-box__show-more">点击查看更多</a>
     <a href="#" class="comment-box__show-less">点击收起评论列表</a>
     {% endif %}
+    {% endif %}
+    <!-- COMMENT LIST END -->
   </div>
   {% endif %}
   <!-- COMMENT BOX END -->

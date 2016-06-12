@@ -2,11 +2,23 @@ var MyMessages = (function($) {
 
   'use strict';
 
-  var options;
-  var defaults = {
-    messages: {
-      url: '',
-      size: 5
+  var options = {
+    defaults: {
+      message: {
+        top_right_corner: '',
+        enable_comment: true,
+        show_comment_list: false,
+        more_comments_btn: true
+      },
+      comment: {}
+    },
+    message: {
+      data: {},
+      map: {},
+      has_more: true
+    },
+    comment: {
+      map: {}
     }
   };
 
@@ -20,6 +32,24 @@ var MyMessages = (function($) {
     tpl_message.__proto__.render = tpl_comment.__proto__.render = function() {
       return false;
     }
+  }
+
+  function access_object_by_path(object, path) {
+    path = path.replace(/\[(\w+)\]/g, '.$1');
+    path = path.replace(/^\./, '');
+    var keys = path.split('.');
+    for(var i = 0, n = keys.length; i < n; ++i) {
+      var key = keys[i];
+      if(key in object) {
+        if(object === undefined || object === null) {
+          return object;
+        }
+        object = object[key];
+      } else {
+        return;
+      }
+    }
+    return object;
   }
 
   function init_message_load_more() {
@@ -182,6 +212,18 @@ var MyMessages = (function($) {
       $inputbox.find('textarea').attr('placeholder', '回复' + $heading.text()).focus();
       // TODO
     }
+  }
+
+  function translate_object(data, map, defaults) {
+    var result = $.extend({}, defaults, data);
+    $.each(map, function(key, value) {
+      if(typeof value == 'function') {
+        result[key] = value.call(null, result);
+      } else {
+        result[key] = access_object_by_path(result, map);
+      }
+    });
+    return result;
   }
 
   function request(method, url, data, callback) {
