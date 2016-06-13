@@ -39,7 +39,8 @@
   {% if enable_comment %}
   <div class="comment-box">
     <!-- COMMENT INPUT SECTION START -->
-    <form class="comment-box__form" action="#" method="post">
+    <form class="comment-box__form" action="#" method="post" enctype="multipart/form-data">
+      <input class="comment-box__file-picker hidden" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp" />
       <img class="img-circle" src="{{avatar_url}}">
       <div class="input-group">
         <div class="input-wrapper">

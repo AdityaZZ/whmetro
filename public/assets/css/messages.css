@@ -500,6 +500,11 @@
 .comment-box .image-box > ul > li:hover > a:after {
   opacity: .6;
 }
+.comment-box .image-box > ul > li > a > img {
+  height: 50px;
+  width: auto;
+  max-width: 50px;
+}
 .comment-box .image-box img {
   vertical-align: top;
 }
@@ -514,4 +519,29 @@
   margin: 4px 0;
   border: 1px dashed #ccc;
   vertical-align: top;
+}
+
+.comment-box .progress-bar {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear;
+  float: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  box-shadow: none;
+}
+.comment-box .progress-bar.is-loading {
+  opacity: 1;
+  /*-webkit-transition: none;
+  transition: none;*/
+}
+.comment-box .progress-bar > .progress {
+  width: 0%;
+  height: 2px;
+  margin: 0;
+  background: #77b6ff;
+  box-shadow: 0 0 10px rgba(119,182,255,0.7);
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
 }

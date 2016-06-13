@@ -75,7 +75,8 @@ var MyMessages = (function($) {
   </div>\
   {% if enable_comment %}\
   <div class="comment-box">\
-    <form class="comment-box__form" action="#" method="post">\
+    <form class="comment-box__form" action="#" method="post" enctype="multipart/form-data">\
+      <input class="comment-box__file-picker hidden" type="file" />\
       <img class="img-circle" src="{{avatar_url}}">\
       <div class="input-group">\
         <div class="input-wrapper">\
@@ -104,10 +105,9 @@ var MyMessages = (function($) {
   </div>\
   {% endif %}\
 </li>';
-  var tpl_imgitem = $('#template-imgitem').html() || '<li><a href="#"><img src="{{src}}"></a></li>';
   var tpl_comment = $('#template-comment').html() || '<li class="comment-box__item media" data-id="{{id}}" data-time="{{timestamp}}">\
   <div class="media-left">\
-    {% if author_url %}<a href="{{author_url}}">{% endif %}<img class="img-circle" src="{{avatar_url}}">{% if author_url %}</a><a href="{{author_url}}">{% endif %}{{author}}{% if author_url %}</a>{% endif %}\
+    <a href="{{author_url}}"><img class="img-circle" src="{{avatar_url}}"></a><a href="{{author_url}}">{{author}}</a>\
   </div>\
   <div class="media-body">\
     <div class="comment-box__item-main">\
@@ -122,11 +122,9 @@ var MyMessages = (function($) {
 </li>';
   if(window.nunjucks) {
     tpl_message = nunjucks.compile(tpl_message);
-    tpl_imgitem = nunjucks.compile(tpl_imgitem);
     tpl_comment = nunjucks.compile(tpl_comment);
   } else {
     tpl_message.__proto__.render =
-    tpl_imgitem.__proto__.render =
     tpl_comment.__proto__.render = function() {
       return false;
     }
@@ -198,7 +196,7 @@ var MyMessages = (function($) {
           var params = $.extend({}, options.defaults.message, options.message.translate(this));
           var html = tpl_message.render(params);
           var $message = $(html);
-          $message.find('.comment-box__list').append($.map(data.object.complexComments, function(comment) {
+          $message.find('.comment-box__list').append($.map(this.complexComments, function(comment) {
             var params = $.extend({}, options.defaults.comment, options.comment.translate(comment));
             return tpl_comment.render(params);
           }));
@@ -250,6 +248,49 @@ var MyMessages = (function($) {
       var $msg_item = $img_btn.closest('.message__item');
       var $img_box = $msg_item.find('.image-box');
       $img_box.toggleClass('show');
+    });
+
+    $('.message').on('click', '.image-box > .add-image', function(e) {
+      e.preventDefault();
+      if(typeof FormData == 'undefined') {
+        return alert('您的浏览器不支持该功能！请使用 Chrome、Firefox、Edge 或 IE11');
+      }
+      $(this).closest('.comment-box__form').find('.comment-box__file-picker')[0].click();
+    });
+
+    $('.message').on('change', '.comment-box__file-picker', function(e) {
+      var $this = $(this);
+      var $form = $this.closest('.comment-box__form');
+      var $image_box = $form.find('.image-box');
+      var $list = $image_box.find('> ul');
+      if(this.files.length + $list.find('> li').length > 9) {
+        $this.val(null);
+        alert('您选择的图片已达上限!');
+        return false;
+      }
+      $.each(this.files, function() {
+        var $file = $('<li><a href="#"><img></a></li>');
+        var reader  = new FileReader();
+        reader.addEventListener('load', function() {
+          $file.find('img').attr('src', reader.result);
+        }, false);
+        $file.data('data', this);
+        $list.append($file);
+        reader.readAsDataURL(this);
+      });
+      if($list.find('> li').length == 9) {
+        $image_box.find('.add-image').addClass('hidden');
+      }
+    });
+
+    $('.message').on('click', '.image-box > ul a', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $item = $(this).closest('li');
+      var $image_box = $item.closest('.image-box');
+      var $add_button = $image_box.find('.add-image');
+      $item.remove();
+      $add_button.removeClass('hidden');
     });
 
     $(document).on('click', function(e) {
@@ -321,16 +362,18 @@ var MyMessages = (function($) {
   function init_comment_paging() {
     $('.message').on('split-page:success', '.message__item .comment-box', function(event, data) {
       var $container = $(this).find('.comment-box__list').empty();
-      if(!data.data.length) {
-        $container.append('<li>没有数据</li>');
+      if(!data.object.length) {
+        $container.append('<li class="text-center text-muted">暂无评论</li>');
         return;
       }
-      $container.append($.map(data.data, function(val, i) {
-        return tpl_comment.render(val);
+      $container.append($.map(data.object, function(val, i) {
+        var params = $.extend({}, options.defaults.comment, options.comment.translate(val));
+        var html = tpl_comment.render(params);
+        return html;
       }));
     }).on('split-page:error', '.message__item .comment-box', function(event) {
       var $container = $(this).find('.comment-box__list').empty();
-      $container.append('<li>加载失败 请稍候再试</li>');
+      $container.append('<li class="text-center text-muted">加载失败 请稍候再试</li>');
     }).on('click', '.comment-box__show-more', function(event) {
       event.preventDefault();
       var $comment_box = $(this).blur().closest('.comment-box').addClass('with-pagination');

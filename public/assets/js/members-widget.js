@@ -433,6 +433,11 @@ var MemberWidget = (function($) {
       case 'set_selected':
         instance.set_selected(value);
         break;
+      case 'destroy':
+        $(this).empty();
+        $(this).data('member-widget', null);
+        instance = null;
+        break;
     }
     return this;
   };

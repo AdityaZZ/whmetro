@@ -63,6 +63,7 @@ router.get('/comments', function(req, res, next) {
         time: Mock.Random.datetime(),
         timestamp: ((new Date()).getTime() / 1000) | 0,
         author: Mock.Random.cname(),
+        author_url: '#',
         avatar_url: `/avatar/${hash}?size=50`,
         reply_to: {
           name: Mock.Random.cname(),

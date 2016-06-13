@@ -1,6 +1,6 @@
 <li class="comment-box__item media" data-id="{{id}}" data-time="{{timestamp}}">
   <div class="media-left">
-    {% if author_url %}<a href="{{author_url}}">{% endif %}<img class="img-circle" src="{{avatar_url}}">{% if author_url %}</a><a href="{{author_url}}">{% endif %}{{author}}{% if author_url %}</a>{% endif %}
+    <a href="{{author_url}}"><img class="img-circle" src="{{avatar_url}}"></a><a href="{{author_url}}">{{author}}</a>
   </div>
   <div class="media-body">
     <div class="comment-box__item-main">

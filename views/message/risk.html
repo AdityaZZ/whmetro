@@ -1,6 +1,9 @@
 {% extends '../layout.html' %}
 
 {% block stylesheet_page %}
+<link rel="stylesheet" href="/assets/vendor/cubeportfolio/css/cubeportfolio.min.css">
+<link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+<link rel="stylesheet" href="/assets/css/members-widget.css">
 <link rel="stylesheet" href="/assets/css/page.css">
 <link rel="stylesheet" href="/assets/css/messages.css">
 {% endblock %}
@@ -8,9 +11,12 @@
 {% block javascript_page %}
 <script src="/assets/vendor/nunjucks/browser/nunjucks.min.js"></script>
 <script src="/assets/vendor/moment/min/moment-with-locales.min.js"></script>
+<script src="/assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script src="/assets/vendor/select2/dist/js/select2.full.min.js"></script>
+<script src="/assets/vendor/select2/dist/js/i18n/zh-CN.js"></script>
+<script src="/assets/js/members-widget.js"></script>
 <script src="/assets/js/pagination.js"></script>
-<script src="/assets/js/message.js"></script>
-<script src="/assets/js/page/my-messages.js"></script>
+<script src="/assets/js/pages/my-messages.js"></script>
 <script>
 function generate_risk_label_by_level(level) {
   switch(level) {
@@ -35,6 +41,7 @@ $('.message').on('click', '.top-right-corner .related-member', function(e) {
   e.preventDefault();
   var $this = $(this).blur();
   var $message = $this.closest('.message__item');
+  var $modal = $('#modal-related-members');
   var id = $message.attr('data-id');
   // TODO
 });
@@ -59,7 +66,7 @@ MyMessages.init({
       var result = {};
       result.id = data.risk.id;
       result.timestamp = data.risk.createTime;
-      result.date = timestamp_to_date(result.timestamp);
+      result.date = result.timestamp ? timestamp_to_date(result.timestamp) : '';
       result.author = data.createByName;
       result.author_url = data.authorUrl;
       result.avatar_url = data.userAvatarUrl;
@@ -68,7 +75,7 @@ MyMessages.init({
       result.acknowledge = result.notice;
       result.enable_comment = !result.notice;
       result.show_comment_list = !result.notice;
-      result.more_comments_btn = !result.notice && data.complexComments.length;
+      result.more_comments_btn = !result.notice && data.complexComments && data.complexComments.length;
       result.labels = [];
       result.labels.push(generate_risk_label_by_level(data.risk.level));
       result.labels.push({
@@ -79,42 +86,53 @@ MyMessages.init({
         name: data.monitorobjectName,
         type: 'label-meta'
       });
-      $.each(data.labels, function() {
-        result.labels.push({
-          id: this.id,
-          name: this.name,
-          type: 'label-custom'
+      if(data.labels) {
+        $.each(data.labels, function() {
+          result.labels.push({
+            id: this.id,
+            name: this.name,
+            type: 'label-custom'
+          });
         });
-      });
+      }
       result.message = '<p>' + htmlspecialchars(data.risk.content) + '</p>';
       if(data.risk.videoUrl) {
         result.message += '<a href="' + data.risk.videoUrl + '" target="_blank">视频链接</a><br>';
       }
-      $.each(data.risk.pictureUrls.split('|'), function() {
-        result.message += '<a href="#"><img src="' + this + '"></a>';
-      });
+      if(data.risk.pictureUrls) {
+        $.each(data.risk.pictureUrls.split('|'), function() {
+          if(!this) return;
+          var ext = this.split('.').pop();
+          result.message += '<a href="#"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '" data-src="' + this + '"></a>';
+        });
+      }
       return result;
     }
   },
   comment: {
     load: {
-      url: '/message/comments'
+      url: '/message/risk/getComment'
     },
     translate: function(data) {
       var result = {};
       result.id = data.comment.id;
       result.timestamp = data.comment.createTime;
-      result.time = timestamp_to_datetime(result.timestamp);
+      result.time = result.timestamp ? timestamp_to_datetime(result.timestamp) : '';
       result.author = data.fromName;
-      result.author_url = '';
+      result.author_url = '#';
       result.avatar_url = '';
       result.reply_to = {};
       result.reply_to.profile_url = '';
       result.reply_to.name = data.toName;
       result.message = '<p>' + htmlspecialchars(data.comment.content) + '</p>';
-      $.each(data.comment.pictureUrls.split('|'), function() {
-        result.message += '<a href="#"><img src="' + this + '"></a>';
-      });
+      if(data.comment.pictureUrls) {
+        $.each(data.comment.pictureUrls.split('|'), function() {
+          if(!this) return;
+          var ext = this.split('.').pop();
+          result.message += '<a href="#"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '"></a>';
+        });
+      }
+      return result;
     }
   }
 });
@@ -205,7 +223,9 @@ MyMessages.init({
           </div>
           <!-- COMMENT SECTION START -->
           <div class="comment-box">
-            <form class="comment-box__form" action="#" method="post">
+            <form class="comment-box__form" action="#" method="post" enctype="multipart/form-data">
+              <input class="comment-box__file-picker hidden" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp" />
+              <!--<input class="hidden" type="file" name="pictures[]" multiple>-->
               <img class="img-circle" src="/assets/images/avatar/u155.png">
               <div class="input-group">
                 <div class="input-wrapper">
@@ -233,6 +253,7 @@ MyMessages.init({
                 <a href="#" class="add-image"><i class="fa fa-plus"></i></a>
               </div>
             </form>
+            <div class="progress-bar"><div class="progress"></div></div>
             <ul class="comment-box__list media-list">
               <li class="comment-box__item media" data-id="1" data-time="">
                 <div class="media-left">
@@ -376,7 +397,8 @@ MyMessages.init({
           </div>
           <!-- COMMENT SECTION START -->
           <div class="comment-box">
-            <form class="comment-box__form" action="#" method="post">
+            <form class="comment-box__form" action="#" method="post" enctype="multipart/form-data">
+              <input class="hidden" type="file" name="pictures[]" multiple>
               <img class="img-circle" src="/assets/images/avatar/u155.png">
               <div class="input-group">
                 <div class="input-wrapper">
@@ -474,6 +496,28 @@ MyMessages.init({
     <div class="col-md-4">
       <div class="map-conatiner" data-spy="affix" data-offset-top="50">
         <img class="img-responsive" src="/assets/images/metro-map.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-related-members">
+  <div class="modal-dialog">
+    <div class="modal-content box box-info">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">相关人员</h4>
+      </div>
+      <div class="modal-body">
+        <h5>已确认</h5>
+        <div class="member-widget-container confirmed"></div>
+        <h5>未确认</h5>
+        <div class="member-widget-container unconfirmed"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-sm btn-primary">确定</button>
       </div>
     </div>
   </div>

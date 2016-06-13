@@ -29,7 +29,7 @@
       type: 'POST',
       context: this.target
     }, this.options, {
-      data: $.extend({}, this.args, { 'page': page }),
+      data: $.extend({}, this.args, { page_num: page }),
       success: function(data, textStatus, jqXHR) {
         $this.dosplit.call($this, page, data);
         $this.target.trigger('split-page:success', [data, textStatus, jqXHR]);
@@ -38,11 +38,9 @@
         $this.target.trigger('split-page:error', [jqXHR, textStatus, errorThrowns]);
       },
       complete: function(jqXHR, textStatus) {
-        if(window.gotoTool && window.gotoTool.ProgressBar) gotoTool.ProgressBar.done();
         $this.target.trigger('split-page:complete', [jqXHR, textStatus]);
       },
       beforeSend: function() {
-        if(window.gotoTool && window.gotoTool.ProgressBar) gotoTool.ProgressBar.start();
         if($this.options.beforeSend) $this.options.beforeSend.apply(this, arguments);
       }
     }));
@@ -178,7 +176,7 @@
       end = start;
       start = len;
     }
-    for(var i=start; i<end ; i++) {
+    for(var i = start; i < end ; ++i) {
       out.push(i);
     }
     return out;
