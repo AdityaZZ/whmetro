@@ -7,12 +7,12 @@
   <div class="media-body">
     <h4 class="media-heading">{% if author_url %}<a href="{{author_url}}">{% endif %}{{author}}{% if author_url %}</a>{% endif %}<small>{{date}}</small></h4>
     <div class="top-right-corner">
-      {{top_right_corner}}
+      {{top_right_corner | safe}}
     </div>
     <div class="message__item-content{% if shrink %} shrinked{% endif %}">
       {% if heading %}<div class="message__item-content__heading">{{heading}}</div>{% endif %}
       <!-- MESSAGE CONTENT START -->
-      {{message}}
+      {{message | safe}}
       <!-- MESSAGE CONTENT END -->
       <div class="message__item-mask"></div>
       <a href="#" class="collapse-button"></a>

@@ -6,32 +6,118 @@
 {% endblock %}
 
 {% block javascript_page %}
-{% raw %}
-<script type="text/template" id="template-comment">
-  <li class="comment-box__item media" data-id="{{id}}" data-time="{{timestamp}}">
-    <div class="media-left">
-      <img class="img-circle" src="{{avatar_url}}"><a href="#">{{author}}</a>
-    </div>
-    <div class="media-body">
-      <div class="comment-box__item-main">
-        <div class="reply-name">{% if reply_to %}<a href="{{reply_to.profile_url}}">{{reply_to.name}}</a>{% endif %}</div>
-        <div class="comment-box__item-content">{{message}}</div>
-      </div>
-      <div class="comment-box__item-toolbox">
-        <span class="time">{{time}}</span>
-        <a href="#" class="reply-link">回复</a>
-      </div>
-    </div>
-  </li>
-</script>
-{% endraw %}
-
 <script src="/assets/vendor/nunjucks/browser/nunjucks.min.js"></script>
+<script src="/assets/vendor/moment/min/moment-with-locales.min.js"></script>
 <script src="/assets/js/pagination.js"></script>
 <script src="/assets/js/message.js"></script>
 <script src="/assets/js/page/my-messages.js"></script>
 <script>
-MyMessages.init('risk');
+function generate_risk_label_by_level(level) {
+  switch(level) {
+    case 1:
+      return {
+        type: 'label-level1',
+        name: '一级风险'
+      };
+    case 2:
+      return {
+        type: 'label-level2',
+        name: '二级风险'
+      };
+    case 3:
+      return {
+        type: 'label-level3',
+        name: '三级风险'
+      };
+  }
+}
+$('.message').on('click', '.top-right-corner .related-member', function(e) {
+  e.preventDefault();
+  var $this = $(this).blur();
+  var $message = $this.closest('.message__item');
+  var id = $message.attr('data-id');
+  // TODO
+});
+MyMessages.init({
+  defaults: {
+    message: {
+      top_right_corner: '<a href="#" class="related-member"><i class="fa fa-user"></i> 相关人员</a>',
+      enable_comment: true,
+      show_comment_list: true,
+      more_comments_btn: true
+    }
+  },
+  message: {
+    load: {
+      url: '/message/risk/getRisk'
+    },
+    acknowledge: {
+      url: '/message/risk/confirmRisk',
+      method: 'POST'
+    },
+    translate: function(data) {
+      var result = {};
+      result.id = data.risk.id;
+      result.timestamp = data.risk.createTime;
+      result.date = timestamp_to_date(result.timestamp);
+      result.author = data.createByName;
+      result.author_url = data.authorUrl;
+      result.avatar_url = data.userAvatarUrl;
+      result.shrink = data.risk.content.length > 300;
+      result.notice = data.risk.confirmStatus == 1;
+      result.acknowledge = result.notice;
+      result.enable_comment = !result.notice;
+      result.show_comment_list = !result.notice;
+      result.more_comments_btn = !result.notice && data.complexComments.length;
+      result.labels = [];
+      result.labels.push(generate_risk_label_by_level(data.risk.level));
+      result.labels.push({
+        name: data.risksourceName,
+        type: 'label-meta'
+      });
+      result.labels.push({
+        name: data.monitorobjectName,
+        type: 'label-meta'
+      });
+      $.each(data.labels, function() {
+        result.labels.push({
+          id: this.id,
+          name: this.name,
+          type: 'label-custom'
+        });
+      });
+      result.message = '<p>' + htmlspecialchars(data.risk.content) + '</p>';
+      if(data.risk.videoUrl) {
+        result.message += '<a href="' + data.risk.videoUrl + '" target="_blank">视频链接</a><br>';
+      }
+      $.each(data.risk.pictureUrls.split('|'), function() {
+        result.message += '<a href="#"><img src="' + this + '"></a>';
+      });
+      return result;
+    }
+  },
+  comment: {
+    load: {
+      url: '/message/comments'
+    },
+    translate: function(data) {
+      var result = {};
+      result.id = data.comment.id;
+      result.timestamp = data.comment.createTime;
+      result.time = timestamp_to_datetime(result.timestamp);
+      result.author = data.fromName;
+      result.author_url = '';
+      result.avatar_url = '';
+      result.reply_to = {};
+      result.reply_to.profile_url = '';
+      result.reply_to.name = data.toName;
+      result.message = '<p>' + htmlspecialchars(data.comment.content) + '</p>';
+      $.each(data.comment.pictureUrls.split('|'), function() {
+        result.message += '<a href="#"><img src="' + this + '"></a>';
+      });
+    }
+  }
+});
 </script>
 {% endblock %}
 

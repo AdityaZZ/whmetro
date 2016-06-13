@@ -24,9 +24,13 @@
 .message__load-more:hover {
   text-decoration: none;
 }
+.message__load-more.loading,
 .message__load-more.disabled {
   color: #666666;
   cursor: default;
+}
+.message__load-more.loading:before {
+  content: "加载中...";
 }
 .message__load-more.disabled:before {
   content: "没有更多了 >_<";
@@ -173,6 +177,31 @@
 .message__labels a {
   color: inherit;
   text-decoration: none;
+}
+.label-level1 {
+  background-color: #ff0d00;
+}
+.label-level2 {
+  background-color: #ff6600;
+}
+.label-level3 {
+  background-color: #ffcc00;
+}
+.label-normal {
+  background-color: #89e128;
+}
+.label-closed {
+  background-color: #999;
+}
+.label-initial {
+  background-color: #3cf;
+}
+.label-rectificate {
+  background-color: #800080;
+}
+.label-custom,
+.label-meta {
+  background-color: #3cf;
 }
 
 /* container of comment section */
@@ -394,7 +423,7 @@
   box-sizing: initial;
 }
 .comment-box__form .input-group-btn {
-  vertical-align: top;
+  vertical-align: bottom;
 }
 .comment-box__form textarea,
 .comment-box__form .input-group-btn > button {
