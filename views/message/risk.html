@@ -3,6 +3,7 @@
 {% block stylesheet_page %}
 <link rel="stylesheet" href="/assets/vendor/cubeportfolio/css/cubeportfolio.min.css">
 <link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+<link rel="stylesheet" href="/assets/vendor/magnific-popup/dist/magnific-popup.css">
 <link rel="stylesheet" href="/assets/css/members-widget.css">
 <link rel="stylesheet" href="/assets/css/page.css">
 <link rel="stylesheet" href="/assets/css/messages.css">
@@ -14,6 +15,7 @@
 <script src="/assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
 <script src="/assets/vendor/select2/dist/js/select2.full.min.js"></script>
 <script src="/assets/vendor/select2/dist/js/i18n/zh-CN.js"></script>
+<script src="/assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="/assets/js/members-widget.js"></script>
 <script src="/assets/js/pagination.js"></script>
 <script src="/assets/js/pages/my-messages.js"></script>
@@ -97,13 +99,13 @@ MyMessages.init({
       }
       result.message = '<p>' + htmlspecialchars(data.risk.content) + '</p>';
       if(data.risk.videoUrl) {
-        result.message += '<a href="' + data.risk.videoUrl + '" target="_blank">视频链接</a><br>';
+        result.message += '<p><a href="' + data.risk.videoUrl + '" target="_blank">视频链接</a></p>';
       }
       if(data.risk.pictureUrls) {
         $.each(data.risk.pictureUrls.split('|'), function() {
           if(!this) return;
           var ext = this.split('.').pop();
-          result.message += '<a href="#"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '" data-src="' + this + '"></a>';
+          result.message += ' <a class="img-cover" href="' + this + '"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '"></a>';
         });
       }
       return result;
@@ -129,7 +131,7 @@ MyMessages.init({
         $.each(data.comment.pictureUrls.split('|'), function() {
           if(!this) return;
           var ext = this.split('.').pop();
-          result.message += '<a href="#"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '"></a>';
+          result.message += ' <a class="img-cover" href="' + this + '"><img src="' + this.substr(0, this.length - ext.length - 1) + '_thumb.' + ext + '"></a>';
         });
       }
       return result;
@@ -164,15 +166,15 @@ MyMessages.init({
             <div class="message__item-content">
               <!-- MESSAGE CONTENT START -->
               <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
               <!-- MESSAGE CONTENT END -->
               <div class="message__item-mask"></div>
               <a href="#" class="collapse-button"></a>
@@ -199,15 +201,15 @@ MyMessages.init({
             <div class="message__item-content">
               <!-- MESSAGE CONTENT START -->
               <p>这儿有个风险啊 ，漏水啦，下雨啦！ 有问题啊！你们赶紧过来修复一下！安静看见我说的好看就阿訇多看点 啊电话爱爱看电视 <a href="#">视频链接</a></p>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
-              <a href="#"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
+              <a class="img-cover" href="/assets/images/pic-placeholder-lg.png"><img src="/assets/images/pic-placeholder-sm.png"></a>
               <!-- MESSAGE CONTENT END -->
               <div class="message__item-mask"></div>
               <a href="#" class="collapse-button"></a>

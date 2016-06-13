@@ -203,10 +203,47 @@ var MyMessages = (function($) {
           messages.push($message);
         });
         $('ul.message').append(messages);
+        var $messages = $('.message__item:not(.img-cover-inited)');
+        try {
+          $messages.addClass('img-cover-inited');
+          var _options = {
+            delegate: '.img-cover',
+            type: 'image',
+            closeOnContentClick: false,
+            closeBtnInside: false,
+            mainClass: 'mfp-with-zoom mfp-img-mobile',
+            image: {
+              verticalFit: true,
+              titleSrc: function(item) {
+                return '<a class="image-source-link" href="' + item.src + '" target="_blank">原始图片</a>';
+              }
+            },
+            gallery: {
+              enabled: true
+            },
+            zoom: {
+              enabled: true,
+              duration: 300,
+              opener: function(element) {
+                return element.find('img');
+              }
+            }
+          };
+          $messages.find('.message__item-content, .comment-box__item-content').each(function() {
+            $(this).magnificPopup(_options);
+          });
+          $messages.find('.img-cover img').on('load.fit-container', function() {
+            var $this = $(this);
+            var fillClass = $this.height() > $this.width() ? 'fillwidth' : 'fillheight';
+            $this.addClass(fillClass).off('load.fit-container');
+          }).each(function() {
+            if(this.complete) $(this).load();
+          });
+        } catch(e) {}
       }, function(error) {
         $btn.removeClass('loading');
       });
-    });
+    }).trigger('click');
   }
 
   function init_acknowledge_button() {
@@ -288,14 +325,20 @@ var MyMessages = (function($) {
       e.stopPropagation();
       var $item = $(this).closest('li');
       var $image_box = $item.closest('.image-box');
+      var $form = $image_box.closest('.comment-box__form');
       var $add_button = $image_box.find('.add-image');
+      $form.find('.comment-box__file-picker').val(null);
       $item.remove();
       $add_button.removeClass('hidden');
     });
 
     $(document).on('click', function(e) {
-      var $imgbox = $(e.target).closest('.image-box');
-      var $imgbtn = $(e.target).closest('.comment-box__image-btn');
+      var $target = $(e.target);
+      if($target.is('.comment-box__file-picker')) {
+        return;
+      }
+      var $imgbox = $target.closest('.image-box');
+      var $imgbtn = $target.closest('.comment-box__image-btn');
       if(!$imgbox.length && !$imgbtn.length) {
         $('.message__item .image-box.show').removeClass('show');
       }
@@ -309,7 +352,7 @@ var MyMessages = (function($) {
         e.preventDefault();
         var content = $.trim($(this).val());
         if(content != '') {
-          // TODO
+          $(this).closest('.comment-box__form').submit();
         }
       }
     });
@@ -400,6 +443,56 @@ var MyMessages = (function($) {
     });
   }
 
+  function init_comment_post() {
+    $('.message').on('submit', '.comment-box__form', function(e) {
+      e.preventDefault();
+    });
+  }
+
+  function init_image_lightbox() {
+    $('body').append('<style type="text/css">\
+.image-source-link {\
+  color: #98C3D1;\
+}\
+.mfp-with-zoom .mfp-container,\
+.mfp-with-zoom.mfp-bg {\
+  opacity: 0;\
+  -webkit-backface-visibility: hidden;\
+  -webkit-transition: all 0.3s ease-out;\
+  -moz-transition: all 0.3s ease-out;\
+  -o-transition: all 0.3s ease-out;\
+  transition: all 0.3s ease-out;\
+}\
+.mfp-with-zoom.mfp-ready .mfp-container {\
+  opacity: 1;\
+}\
+.mfp-with-zoom.mfp-ready.mfp-bg {\
+  opacity: 0.8;\
+}\
+.mfp-with-zoom.mfp-removing .mfp-container,\
+.mfp-with-zoom.mfp-removing.mfp-bg {\
+  opacity: 0;\
+}\
+</style>');
+    if($.magnificPopup) {
+      $.extend(true, $.magnificPopup.defaults, {
+        tClose: '关闭 (Esc)',
+        tLoading: '正在加载...',
+        gallery: {
+          tPrev: '上一张',
+          tNext: '下一张',
+          tCounter: '%curr% / %total%'
+        },
+        image: {
+          tError: '<a href="%url%">图片</a>加载失败'
+        },
+        ajax: {
+          tError: '<a href="%url%">内容</a>加载失败'
+        }
+      });
+    }
+  }
+
   function hide_reply_quote(message_item) {
     var $message_item = $(message_item);
     var $inputbox = $message_item.find('.comment-box__form .input-wrapper');
@@ -484,6 +577,8 @@ var MyMessages = (function($) {
       init_image_box();
       init_comment_input();
       init_comment_paging();
+      init_comment_post();
+      init_image_lightbox();
     }
   };
 

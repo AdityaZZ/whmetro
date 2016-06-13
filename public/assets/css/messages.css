@@ -124,10 +124,26 @@
   content: "展开全文";
 }
 
+.fillwidth {
+  width: 100%;
+  height: auto;
+}
+.fillheight {
+  height: 100%;
+  width: auto;
+}
+.img-cover {
+  display: inline-block;
+  overflow: hidden;
+}
 .message__item-content__heading {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
+}
+.message__item-content .img-cover {
+  width: 70px;
+  height: 70px;
 }
 
 .message-job-label {
@@ -255,6 +271,11 @@
 }
 .comment-box__item > .media-left:after {
   content: "：";
+}
+
+.comment-box__item-content .img-cover {
+  width: 50px;
+  height: 50px;
 }
 
 .comment-box__item-main .reply-name {
